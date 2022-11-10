@@ -1,3 +1,5 @@
+import { Module } from "./module";
+
 export interface Training {
     id: string;
     name: string;
