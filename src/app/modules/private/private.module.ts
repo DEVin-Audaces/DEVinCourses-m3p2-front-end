@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { PrivateRoutingModule } from './private-routing.module';
 import { CreateModuleComponent } from './trainings/create-module/create-module.component';
+import { TrainingScreenComponent } from 'src/app/components/training-screen/training-screen.component';
 
 
 
@@ -12,7 +13,8 @@ import { CreateModuleComponent } from './trainings/create-module/create-module.c
   declarations: [
     FullpageComponent,
     HeaderComponent,
-    CreateModuleComponent
+    CreateModuleComponent,
+    TrainingScreenComponent
   ],
   imports: [
     CommonModule,
