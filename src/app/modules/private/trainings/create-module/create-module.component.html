@@ -1,0 +1,23 @@
+<div class="create-module__container">
+
+  <div class="create-module__header">
+    <input [(ngModel)]="module.name" type="text" placeholder="Nome do módulo">
+    <button (click)="addAssignment()">+ Atividade</button>
+    <button (click)="addLesson()">+ Aula</button>
+  </div>
+
+  <div class="create-module__topics" *ngFor="let topic of topics">
+    <ng-container *ngIf="topic.type == 'lesson'; then lesson; else assignment"></ng-container>
+
+    <ng-template #lesson>
+      <input [(ngModel)]="topic.name" type="text" placeholder="Título da aula">
+      <input class="create-module__topics__content" [(ngModel)]="topic.content" type="url" placeholder="URL do vídeo">
+    </ng-template>
+
+    <ng-template #assignment>
+      <input [(ngModel)]="topic.name" type="text" placeholder="Título da atividade">
+      <input class="create-module__topics__content" [(ngModel)]="topic.content" type="text" placeholder="Conteúdo">
+    </ng-template>
+  </div>
+
+</div>
