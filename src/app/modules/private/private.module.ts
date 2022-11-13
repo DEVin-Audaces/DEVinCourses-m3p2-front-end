@@ -5,7 +5,8 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { PrivateRoutingModule } from './private-routing.module';
 import { CreateModuleComponent } from './trainings/create-module/create-module.component';
-import { TrainingScreenComponent } from 'src/app/components/training-screen/training-screen.component';
+import { TrainingScreenComponent } from 'src/app/modules/private/trainings/training-screen/training-screen.component';
+import { ContentComponent } from 'src/app/modules/private/trainings/content/content.component';
 
 
 
@@ -14,7 +15,8 @@ import { TrainingScreenComponent } from 'src/app/components/training-screen/trai
     FullpageComponent,
     HeaderComponent,
     CreateModuleComponent,
-    TrainingScreenComponent
+    TrainingScreenComponent,
+    ContentComponent
   ],
   imports: [
     CommonModule,
