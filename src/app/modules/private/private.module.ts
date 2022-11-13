@@ -1,3 +1,5 @@
+import { HeaderComponent } from './components/header/header.component';
+import { FullpageComponent } from './layout/fullpage/fullpage.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
@@ -8,6 +10,8 @@ import { CreateModuleComponent } from './trainings/create-module/create-module.c
 
 @NgModule({
   declarations: [
+    FullpageComponent,
+    HeaderComponent,
     CreateModuleComponent
   ],
   imports: [
