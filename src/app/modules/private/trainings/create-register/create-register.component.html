@@ -1,0 +1,23 @@
+<form class="form" [formGroup]="form" (ngSubmit)="addTraining()">
+    <div class="div-1 d-flex justify-content-center">
+      <div class="div-2">
+        <div class="div-3-input p-3">
+          <input formControlName="name" placeholder="Nome do Treinamento" type="text" />
+        </div>
+        <div class="div-4-input p-3">
+          <input formControlName="instructor" placeholder="Professor" type="text" />
+        </div>
+        <div class="div-5-input p-3">
+          <input formControlName="duration" placeholder="Duração" type="number" min="8" max="100" />
+        </div>
+      </div>
+      <div class="div-6 p-3">
+        <textarea class="formControl" rows="3" formControlName="summary" placeholder="Resumo do Treinamento"
+          type="text">
+        </textarea>
+        <div class="div-7-input pt-3">
+          <input class="btn btn-primary m-1 p-1 w-100" [disabled]="!form.valid" type="submit" value="Cadastrar" />
+        </div>
+      </div>
+    </div>
+  </form>
