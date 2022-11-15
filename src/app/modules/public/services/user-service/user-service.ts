@@ -31,6 +31,13 @@ export class UsersService {
     this.userSubject$.next(this.userData$);
     return this.userSubject$.asObservable();
   }
-git 
+
+  updateUser(data: Users){
+    this._http.put<Users>(`${this.url}/users/}`, data).subscribe(
+      x => this.userData$ = x
+      );
+      this.userSubject$.next(this.userData$);
+  }
+
 
 }
