@@ -19,8 +19,11 @@ export class AuthenticationInterceptor implements HttpInterceptor {
 
     if (this._tokenService.hasToken() == true) {
         const token = this._tokenService.returnToken();
-        const headers = new HttpHeaders().append('Bearer:', token);
-        request = request.clone({ headers });
+        const headers = new HttpHeaders().set('content-type', 'application/json')
+                                         .set('Access-Control-Allow-Origin', '*')
+                                         .set('Authorization', 'Bearer ' + token )
+                                         .set('withCredentials', 'true' );
+      request = request.clone({ headers });
     }
 
     return next.handle(request);
