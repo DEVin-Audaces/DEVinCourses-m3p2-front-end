@@ -19,13 +19,12 @@ export class UsersService {
     private _http: HttpClient
   ) {
     if(this._token.hasToken()){
-      const data = this._token.returnJwtData();
-      this.getUser(data.id);
+      this.getUser();
     }
   }
 
-  getUser(id: string): Observable<Users|null>{
-    this._http.get<Users>(`${this.url}/users/${id}`).subscribe(
+  getUser(): Observable<Users|null>{
+    this._http.get<Users>(`${this.url}/users/UserProfile`).subscribe(
       x => this.userData$ = x
     );
     this.userSubject$.next(this.userData$);
@@ -38,5 +37,16 @@ export class UsersService {
       );
       this.userSubject$.next(this.userData$);
   }
+
+  public logout(): void{
+    this._token.removeToken();
+    this.userSubject$.next(null);
+  }
+
+  public isLoged(): boolean{
+    return this._token.hasToken();
+  }
+
+
 
 }
