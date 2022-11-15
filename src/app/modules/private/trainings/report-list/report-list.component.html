@@ -1,0 +1,20 @@
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Duração</th>
+                <th>Total de Alunos Concluintes</th>
+                <th>Ativo/Suspenso</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let curso of mockCursos">
+                <td>{{curso.name}}</td>
+                <td>{{curso.duration}}</td>
+                <td>{{curso.finished_students}}</td>
+                <td>{{curso.active}}</td>
+            </tr>
+        </tbody>
+    </table>    
+</div>
