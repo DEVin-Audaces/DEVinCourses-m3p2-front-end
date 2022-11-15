@@ -9,6 +9,19 @@
   width: 30%;
   margin: 0 auto;
 
+  .create-module__input {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    .warning-message {
+      font-size: smaller;
+      color: red;
+      margin-bottom: 1px;
+      padding-left: 5px;
+    }
+  }
+
   input:focus {
     outline: none;
     // box-shadow: inset 0px 0px 3px #6e6e6e;
@@ -40,15 +53,13 @@
     }
   }
 
-  .create-module__topics{
+  .create-module__topics {
     display: flex;
     align-items: stretch;
     flex-grow: 1;
     margin-top: 5px;
 
     input {
-      flex-grow: 1;
-      padding: 5px;
       border: none;
       background-color: #F0F0F0;
       color: #B7B7B7;

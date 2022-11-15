@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Module } from 'src/app/interfaces/module';
 import { Topic } from 'src/app/interfaces/topic';
+import { youtubeValidator } from './youtube.validator';
 
 @Component({
   selector: 'app-create-module',
@@ -9,29 +11,48 @@ import { Topic } from 'src/app/interfaces/topic';
 })
 export class CreateModuleComponent implements OnInit {
 
-  public topics: Topic[] = [];
-  public module: Module = { topics: this.topics };
+  public forms: FormGroup[] = [];
 
-  constructor() { }
+  public moduleForm: FormGroup = this.fb.group({
+    name: ['', [Validators.required]]
+  });
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
 
   public addAssignment(): void {
-    let activity: Topic = {
-      type: 'assignment',
-      index: this.topics.length
-    }
+    let assignmentForm: FormGroup = this.fb.group({
+      name: ['', [Validators.required]],
+      content: ['', [Validators.required]],
+      type: ['assignment'],
+      index: [this.forms.length]
+    });
 
-    this.topics.push(activity);
+    this.forms.push(assignmentForm);
   }
 
   public addLesson(): void {
-    let activity: Topic = {
-      type: 'lesson',
-      index: this.topics.length
-    }
+    let lessonForm: FormGroup = this.fb.group({
+      name: ['', [Validators.required]],
+      content: ['', [Validators.required, youtubeValidator]],
+      type: ['lesson'],
+      index: [this.forms.length]
+    });
 
-    this.topics.push(activity);
+    this.forms.push(lessonForm);
+  }
+
+  public getModule(): Module {
+    const name: string = this.moduleForm.value['name'];
+    const topics: Topic[] = this.forms.map(form => form.value);
+
+    const module: Module = {
+      name: name,
+      topics: topics
+    };
+
+    return module;
   }
 }
