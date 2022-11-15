@@ -4,7 +4,6 @@ import { MaterialComponentsModule } from '../material/material-components/materi
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { AuthenticationModule } from '../authentication/authentication.module';
 
 
 
@@ -16,16 +15,14 @@ import { AuthenticationModule } from '../authentication/authentication.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule,
-    AuthenticationModule,
+    RouterModule
   ],
   exports: [
     MaterialComponentsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule,
-    AuthenticationModule
+    RouterModule
   ]
 })
 export class SharedModule { }
