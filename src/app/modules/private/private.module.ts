@@ -8,6 +8,7 @@ import { CreateModuleComponent } from './trainings/create-module/create-module.c
 import { TrainingScreenComponent } from 'src/app/modules/private/trainings/training-screen/training-screen.component';
 import { ContentComponent } from 'src/app/modules/private/trainings/content/content.component';
 import { CreateRegisterComponent } from './trainings/create-register/create-register.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -23,7 +24,8 @@ import { CreateRegisterComponent } from './trainings/create-register/create-regi
   imports: [
     CommonModule,
     SharedModule,
-    PrivateRoutingModule
+    PrivateRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class PrivateModule { }

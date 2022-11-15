@@ -1,23 +1,60 @@
 <div class="create-module__container">
 
-  <div class="create-module__header">
-    <input [(ngModel)]="module.name" type="text" placeholder="Nome do módulo">
+  <div class="create-module__header" [formGroup]="moduleForm">
+    <div class="create-module__input">
+      <input formControlName="name" type="text" placeholder="Nome do módulo">
+
+      <p *ngIf="moduleForm.get('name')?.errors?.['required'] &&
+      moduleForm.get('name')?.touched"
+      class="warning-message">Título obrigatório</p>
+    </div>
+
     <button (click)="addAssignment()">+ Atividade</button>
     <button (click)="addLesson()">+ Aula</button>
   </div>
 
-  <div class="create-module__topics" *ngFor="let topic of topics">
-    <ng-container *ngIf="topic.type == 'lesson'; then lesson; else assignment"></ng-container>
+  <div class="create-module__topics" *ngFor="let form of forms">
+    <ng-container *ngIf="form.value.type== 'lesson'; then lesson; else assignment"></ng-container>
 
-    <ng-template #lesson>
-      <input [(ngModel)]="topic.name" type="text" placeholder="Título da aula">
-      <input class="create-module__topics__content" [(ngModel)]="topic.content" type="url" placeholder="URL do vídeo">
+    <ng-template #lesson [formGroup]="form">
+      <div class="create-module__input">
+        <input formControlName="name" type="text" placeholder="Título da aula">
+
+        <p *ngIf="form.get('name')?.errors?.['required'] &&
+        form.get('name')?.touched"
+        class="warning-message">Título obrigatório</p>
+      </div>
+
+      <div class="create-module__input">
+
+        <input formControlName="content" class="create-module__topics__content" type="url" placeholder="URL do vídeo">
+
+        <p *ngIf="form.get('content')?.errors?.['required'] &&
+        form.get('content')?.touched"
+        class="warning-message">Vídeo obrigatório</p>
+
+        <p *ngIf="form.get('content')?.errors?.['youtube'] &&
+        form.get('content')?.touched"
+        class="warning-message">Formato de vídeo inválido</p>
+      </div>
     </ng-template>
 
-    <ng-template #assignment>
-      <input [(ngModel)]="topic.name" type="text" placeholder="Título da atividade">
-      <input class="create-module__topics__content" [(ngModel)]="topic.content" type="text" placeholder="Conteúdo">
+    <ng-template #assignment [formGroup]="form">
+      <div class="create-module__input">
+        <input formControlName="name" type="text" placeholder="Título da atividade">
+
+        <p *ngIf="form.get('name')?.errors?.['required'] &&
+        form.get('name')?.touched"
+        class="warning-message">Título obrigatório</p>
+      </div>
+
+      <div class="create-module__input">
+        <input formControlName="content" class="create-module__topics__content" type="text" placeholder="Conteúdo">
+
+        <p *ngIf="form.get('content')?.errors?.['required'] &&
+        form.get('content')?.touched"
+        class="warning-message">Conteúdo obrigatório</p>
+      </div>
     </ng-template>
   </div>
-
 </div>
