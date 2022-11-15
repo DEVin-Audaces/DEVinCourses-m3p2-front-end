@@ -7,6 +7,7 @@ import { PrivateRoutingModule } from './private-routing.module';
 import { CreateModuleComponent } from './trainings/create-module/create-module.component';
 import { TrainingScreenComponent } from 'src/app/modules/private/trainings/training-screen/training-screen.component';
 import { ContentComponent } from 'src/app/modules/private/trainings/content/content.component';
+import { CreateRegisterComponent } from './trainings/create-register/create-register.component';
 
 
 
@@ -16,7 +17,8 @@ import { ContentComponent } from 'src/app/modules/private/trainings/content/cont
     HeaderComponent,
     CreateModuleComponent,
     TrainingScreenComponent,
-    ContentComponent
+    ContentComponent,
+    CreateRegisterComponent
   ],
   imports: [
     CommonModule,
