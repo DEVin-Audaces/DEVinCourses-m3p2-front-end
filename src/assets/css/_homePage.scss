@@ -7,7 +7,7 @@
 }
 
 .logoContainer{
-  width: 55%;
+  width: 60%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -17,4 +17,12 @@
 .logo{
   height: 65%;
   width: 90%;
+}
+
+.contentContainer{
+  width: 55%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
