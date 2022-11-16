@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5 box-container">
+        <div class="col-10 col-sm-8 col-lg-6" style="margin-top: 0px;">
+            <img src="{{randomImage}}" class="d-block mx-lg-auto img-fluid" alt="Imagem do curso" width="560"
+                height="330" loading="lazy">
+        </div>
+        <div class="col-lg-6 box-summary">
+            <h1 class="display-5 fw-bold lh-1 mb-3">{{mockTraining.name}}</h1>
+            <div>
+                <p class="lead">
+                    <strong>Resumo: </strong>{{mockTraining.summary}}
+                </p>
+                <p class="lead">
+                    <strong>Duração: </strong>{{mockTraining.duration}} horas
+                </p>
+                <p class="lead">
+                    <strong>Professor: </strong>{{mockTraining.instructor}}
+                </p>
+            </div>
+
+            <button *ngIf="buttonType == 'não matriculado'" mat-flat-button color="primary"
+                matTooltip="Clique no botão para se matricular" matTooltipPosition="below" matTooltipShowDelay=500
+                (click)="submitSubscription()">Matricular no
+                treinamento</button>
+            <button *ngIf="buttonType == 'matriculado'" mat-flat-button color="warn"
+                matTooltip="Clique no botão para cancelar sua matricula" matTooltipPosition="below"
+                matTooltipShowDelay=500 (click)="cancelSubscription()">Desmarticular no treinamento</button>
+            <button *ngIf="buttonType == 'suspenso'" mat-flat-button disabled>⚠️ O curso está suspenso ⚠️</button>
+
+        </div>
+    </div>
+
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let mod of mockTraining.module; let i = index">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="accordion-text">
+                    <strong>Módulo {{i+1}}</strong>: {{mod.name}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p *ngFor="let topic of mod.topics" class="accordion-text">
+                <strong>{{topic.type}}:</strong> {{topic.name}}
+            </p>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

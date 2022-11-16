@@ -9,7 +9,11 @@ import { TrainingScreenComponent } from 'src/app/modules/private/trainings/train
 import { ContentComponent } from 'src/app/modules/private/trainings/content/content.component';
 import { CreateRegisterComponent } from './trainings/create-register/create-register.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { TrainingRegistrationComponent } from './trainings/training-registration/training-registration.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -19,13 +23,18 @@ import { ReactiveFormsModule } from '@angular/forms';
     CreateModuleComponent,
     TrainingScreenComponent,
     ContentComponent,
-    CreateRegisterComponent
+    CreateRegisterComponent,
+    TrainingRegistrationComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     PrivateRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSliderModule,
+    MatExpansionModule,
+    MatSnackBarModule,
+    MatTooltipModule
   ]
 })
 export class PrivateModule { }
