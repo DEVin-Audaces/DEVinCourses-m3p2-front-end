@@ -5,7 +5,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 
 
@@ -19,15 +20,19 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     MatListModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    MatIconModule,
+    MatInputModule
   ],
   exports:[
     MatSidenavModule,
     MatTableModule,
     MatButtonModule,
     MatListModule,
-    MatFormFieldModule,
-    MatIconModule
+    MatInputModule,
+    MatIconModule,
+    MatIconModule,
+    MatFormFieldModule
   ]
 })
 export class MaterialComponentsModule { }
