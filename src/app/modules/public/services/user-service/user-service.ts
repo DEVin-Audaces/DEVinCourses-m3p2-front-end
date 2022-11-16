@@ -46,6 +46,9 @@ export class UsersService {
   public isLoged(): boolean{
     return this._token.hasToken();
   }
+  public saveToken(token: string): void {
+    this._token.saveToken(token);
+  }
 
 
 
