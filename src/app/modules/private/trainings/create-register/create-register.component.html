@@ -1,23 +1,42 @@
-<!-- <form class="form" [formGroup]="form" (ngSubmit)="addTraining()">
-    <div class="div-1 d-flex justify-content-center">
-      <div class="div-2">
-        <div class="div-3-input p-3">
-          <input formControlName="name" placeholder="Nome do Treinamento" type="text" />
-        </div>
-        <div class="div-4-input p-3">
-          <input formControlName="instructor" placeholder="Professor" type="text" />
-        </div>
-        <div class="div-5-input p-3">
-          <input formControlName="duration" placeholder="Duração" type="number" min="8" max="100" />
-        </div>
+<form class="form" [formGroup]="form" (ngSubmit)="addTraining()">
+  <div class="div d-flex justify-content-center">
+    <div class="div p-2">
+      <div class="div-input p-2">
+        <input formControlName="name" placeholder="Nome do Treinamento" type="text" />
+        <p *ngIf="form.get('name')?.errors?.['required'] &&
+        form.get('name')?.touched" class="warning-message">Campo obrigatório</p>
+        <p class="warning-message" *ngIf="!(form.get('name')?.errors?.['required'] &&
+        form.get('name')?.touched)">&nbsp;</p>
       </div>
-      <div class="div-6 p-3">
-        <textarea class="formControl" rows="3" formControlName="summary" placeholder="Resumo do Treinamento"
-          type="text">
-        </textarea>
-        <div class="div-7-input pt-3">
-          <input class="btn btn-primary m-1 p-1 w-100" [disabled]="!form.valid" type="submit" value="Cadastrar" />
-        </div>
+      <div class="div p-2">
+        <input formControlName="instructor" placeholder="Professor" type="text" />
+        <p *ngIf="form.get('instructor')?.errors?.['required'] &&
+        form.get('instructor')?.touched" class="warning-message">Professor obrigatório</p>
+        <p *ngIf="!(form.get('instructor')?.errors?.['required'] &&
+        form.get('instructor')?.touched)" class="warning-message">&nbsp;</p>
+      </div>
+      <div class="div p-2">
+        <input formControlName="duration" placeholder="Duração" type="number" min="8" max="100" />
+        <p *ngIf="form.get('duration')?.errors?.['required'] &&
+        form.get('duration')?.touched" class="warning-message">Duração obrigatória</p>
+        <p *ngIf="!(form.get('duration')?.errors?.['required'] &&
+        form.get('duration')?.touched)" class="warning-message">&nbsp;</p>
       </div>
     </div>
-  </form> -->
+    <div class="div p-2">
+      <div class="div p-2">
+        <textarea class="formControl" rows="3" formControlName="summary" placeholder="Resumo do Treinamento"
+          type="text">
+      </textarea>
+        <p *ngIf="form.get('summary')?.errors?.['required'] &&
+      form.get('summary')?.touched" class="warning-message">Resumo obrigatório</p>
+        <p *ngIf="!(form.get('summary')?.errors?.['required'] &&
+      form.get('summary')?.touched)" class="warning-message">&nbsp;</p>
+      </div>
+      <div class="div p-2">
+        <input class="btn btn-primary btn-sm w-100" [disabled]="!form.valid" value="Cadastrar"
+          (click)="addTraining()"/>
+      </div>
+    </div>
+  </div>
+</form>
