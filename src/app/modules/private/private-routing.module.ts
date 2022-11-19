@@ -11,7 +11,7 @@ const routes: Routes = [
     children:[
       {path:'home', component: TrainingScreenComponent}, // componente temporário para testes
       {path:'watch', component:TrainingScreenComponent},
-      {path:'registration', component:TrainingRegistrationComponent},
+      {path:'registration/:id', component:TrainingRegistrationComponent},
       {path:'create', component:CreateTrainingComponent},
     ]
   }
