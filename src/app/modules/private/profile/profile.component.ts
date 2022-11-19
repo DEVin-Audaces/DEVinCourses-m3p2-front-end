@@ -14,7 +14,6 @@ export class ProfileComponent implements OnInit {
   resultLoad: any;
   userId = '4C4AF6A4-716E-4D2C-B439-3AC76991CB79'; // TODO Depois realizar a consulta do id automatico
 
-
   trainingList: Training[] = [];
 
   constructor(private _activatedRoute: ActivatedRoute, private _profileService: ProfileService, private _tokenService: TokenService) { }

@@ -9,6 +9,7 @@ export class TrainingCardComponent implements OnInit {
 
   constructor() { }
 
+  
   ngOnInit(): void {
   }
 

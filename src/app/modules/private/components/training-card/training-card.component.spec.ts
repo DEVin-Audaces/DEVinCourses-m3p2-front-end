@@ -12,6 +12,7 @@ describe('TrainingCardComponent', () => {
     })
     .compileComponents();
 
+    
     fixture = TestBed.createComponent(TrainingCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

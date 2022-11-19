@@ -12,6 +12,7 @@ export class ProfileService {
 
   private readonly ApiPath = `${environment.API_URL}/trainings/list`;
 
+  
   constructor(private _httpClient: HttpClient) { }
 
   public loadByUserId(userId: any) {
