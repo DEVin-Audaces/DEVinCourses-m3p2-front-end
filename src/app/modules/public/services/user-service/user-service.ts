@@ -23,6 +23,10 @@ export class UsersService {
     }
   }
 
+  createUser(data: Users): Observable<any>{
+      return this._http.post<any>(`${this.url}/users`, data);
+    }
+
   getUser(): Observable<Users|null>{
     this._http.get<Users>(`${this.url}/users/UserProfile`).subscribe(
       x => this.userData$ = x
