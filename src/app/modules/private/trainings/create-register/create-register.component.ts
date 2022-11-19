@@ -18,7 +18,6 @@ export class CreateRegisterComponent implements OnInit {
       summary: ['', Validators.required],
       instructor: ['', Validators.required],
       duration: ['', Validators.required],
-      active: true
     });
    }
 
@@ -27,13 +26,12 @@ export class CreateRegisterComponent implements OnInit {
   }
 
   addTraining() {
-    //console.log(this.form.value);
-    if (this.form.valid)
-    {
-      this.sendTrainingEvent.emit(<Training>this.form.value)
-      this.form.disable()
-    }
-    else {    }
+      this.form.disable();
+      this.sendTrainingEvent.emit();
+  }
+
+  getTraining(): Training {
+    return this.form.value;
   }
   
 }
