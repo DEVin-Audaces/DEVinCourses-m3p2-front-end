@@ -54,6 +54,10 @@ export class UsersService {
     this._token.saveToken(token);
   }
 
+  changeUserPassword(email:string, password: string):Observable<any>{
+    return this._http.post(`${this.url}/users/ResetPassword/`, {email, password});
+  }
+
 
 
 }
