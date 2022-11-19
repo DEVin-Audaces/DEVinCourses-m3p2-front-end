@@ -4,16 +4,17 @@
     <div class="create-module__input">
       <input formControlName="name" type="text" placeholder="Nome do módulo">
 
-      <p *ngIf="moduleForm.get('name')?.errors?.['required'] &&
-      moduleForm.get('name')?.touched"
-      class="warning-message">Título obrigatório</p>
     </div>
 
-    <button (click)="addAssignment()">+ Atividade</button>
-    <button (click)="addLesson()">+ Aula</button>
+    <button [disabled]="finished" (click)="addAssignment()">+ Atividade</button>
+    <button [disabled]="finished" (click)="addLesson()">+ Aula</button>
   </div>
 
-  <div class="create-module__topics" *ngFor="let form of forms">
+  <p *ngIf="moduleForm.get('name')?.errors?.['required'] &&
+  moduleForm.get('name')?.touched"
+  class="warning-message">Título obrigatório</p>
+
+  <div class="create-module__topics" *ngFor="let form of topicForms">
     <ng-container *ngIf="form.value.type== 'lesson'; then lesson; else assignment"></ng-container>
 
     <ng-template #lesson [formGroup]="form">
@@ -56,5 +57,9 @@
         class="warning-message">Conteúdo obrigatório</p>
       </div>
     </ng-template>
+  </div>
+  <div *ngIf="topicForms.length > 0 && finished == false" class="create-module__footer">
+    <button [disabled]="finished" (click)="sendModule()">Concluir Módulo</button>
+    <p class="warning-message" *ngIf="errorMessage">Formulário inválido. Reveja as informações.</p>
   </div>
 </div>
