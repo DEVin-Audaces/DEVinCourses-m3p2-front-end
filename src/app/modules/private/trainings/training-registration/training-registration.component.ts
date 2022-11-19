@@ -10,8 +10,8 @@ import { RegistrationService } from '../../services/registration.service';
 })
 export class TrainingRegistrationComponent implements OnInit {
   trainingId: any;
-  userId = 'B62DCFA2-F5EF-4840-B40B-8A3ADCE3BAE3'; // TODO Depois realizar a consulta do id automatico
-  buttonType = 'não matriculado';  // TODO Depois realizar a consulta inicial para verificar se o usuário possui ou não matricula
+  userId = 'B62DCFA2-F5EF-4840-B40B-8A3ADCE3BAE2'; // TODO Depois realizar a consulta do id automatico
+  buttonType = 'não matriculado';
 
   panelOpenState = false;
 
@@ -42,32 +42,28 @@ export class TrainingRegistrationComponent implements OnInit {
     await this._activatedRoute.params.subscribe((params) => {
       if (params['id'] != undefined) {
         this.trainingId = params['id'];
-        console.log('trainingId', this.trainingId);
         this._registrationService.loadById(this.trainingId).then((data: any) => {
           this.resultTrainingId = data;
           if (this.resultTrainingId.active == false) this.buttonType = 'suspenso';
-          console.log(this.resultTrainingId);
           data.modules.forEach((mod: any) => {
             mod.topics.forEach((topic: any) => {
               this.listTopicIds.push(topic.id);
             });
           });
-          console.log('listTopicIds', this.listTopicIds);
         }
         );
-
       }
     })
   }
 
-  submitSubscription() {
-    // TODO Depois inserir código para realizar a matrícula
+  async submitSubscription() {
     const registration = {
       UserId: this.userId,
       TrainingId: this.resultTrainingId.id,
       TopicIds: this.listTopicIds
     };
-    this._registrationService.create(registration);
+
+   await this._registrationService.create(registration).subscribe();
     this.openSnackBar(this.resultTrainingId.name, 'matriculado');
   }
 
