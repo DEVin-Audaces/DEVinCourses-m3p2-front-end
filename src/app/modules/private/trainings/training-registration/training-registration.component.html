@@ -4,17 +4,17 @@
             <img src="{{randomImage}}" class="d-block mx-lg-auto img-fluid" alt="Imagem do curso" width="560"
                 height="330" loading="lazy">
         </div>
-        <div class="col-lg-6 box-summary">
-            <h1 class="display-5 fw-bold lh-1 mb-3">{{mockTraining.name}}</h1>
+        <div *ngIf="resultTrainingId != undefined" class="col-lg-6 box-summary">
+            <h1 class="display-5 fw-bold lh-1 mb-3">{{resultTrainingId.name}}</h1>
             <div>
                 <p class="lead">
-                    <strong>Resumo: </strong>{{mockTraining.summary}}
+                    <strong>Resumo: </strong>{{resultTrainingId.summary}}
                 </p>
                 <p class="lead">
-                    <strong>Duração: </strong>{{mockTraining.duration}} horas
+                    <strong>Duração: </strong>{{resultTrainingId.duration}} horas
                 </p>
                 <p class="lead">
-                    <strong>Professor: </strong>{{mockTraining.instructor}}
+                    <strong>Professor: </strong>{{resultTrainingId.instructor}}
                 </p>
             </div>
 
@@ -28,10 +28,14 @@
             <button *ngIf="buttonType == 'suspenso'" mat-flat-button disabled>⚠️ O curso está suspenso ⚠️</button>
 
         </div>
+
+        <div *ngIf="resultTrainingId == undefined" class="col-lg-6 box-summary">
+          <h1 class="lead">Não há conteúdo no momento</h1>
+        </div>
     </div>
 
-    <mat-accordion>
-        <mat-expansion-panel *ngFor="let mod of mockTraining.module; let i = index">
+    <mat-accordion *ngIf="resultTrainingId != undefined" class="box-accordion">
+        <mat-expansion-panel *ngFor="let mod of resultTrainingId.modules; let i = index">
             <mat-expansion-panel-header>
                 <mat-panel-title class="accordion-text">
                     <strong>Módulo {{i+1}}</strong>: {{mod.name}}
