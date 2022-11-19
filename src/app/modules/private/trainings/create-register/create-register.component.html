@@ -34,8 +34,8 @@
       form.get('summary')?.touched)" class="warning-message">&nbsp;</p>
       </div>
       <div class="div p-2">
-        <input class="btn btn-primary btn-sm w-100" [disabled]="!form.valid" value="Cadastrar"
-          (click)="addTraining()"/>
+        <input class="btn btn-primary btn-sm w-100" value="Cadastrar"
+          (click)="addTraining()" [disabled]="(form.disabled || !form.valid )" />
       </div>
     </div>
   </div>
