@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
+import { RegistrationService } from '../../services/registration.service';
 
 @Component({
   selector: 'app-training-registration',
@@ -7,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./training-registration.component.scss']
 })
 export class TrainingRegistrationComponent implements OnInit {
+  trainingId: any;
   userId = 'B62DCFA2-F5EF-4840-B40B-8A3ADCE3BAE3'; // TODO Depois realizar a consulta do id automatico
   buttonType = 'não matriculado';  // TODO Depois realizar a consulta inicial para verificar se o usuário possui ou não matricula
 
@@ -28,51 +31,44 @@ export class TrainingRegistrationComponent implements OnInit {
     "https://img.freepik.com/fotos-gratis/mulher-frequentando-aula-online_23-2148854911.jpg",
   ];
 
-  public mockTraining = {
-    trainingId: 'EDFEB1A7-3073-4DFB-B3D3-84DEB535BE1A',
-    name: "Nome do Treinamento",
-    summary: "resumo resumo resumo resumo resumo resumo resumo resumo resumo resumo",
-    duration: 8,
-    instructor: "Nome do Professor",
-    module: [
-      {
-        name: 'Nome do Módulo 1',
-        topics: [{
-          topicId: 'C14BAB10-0DEF-4962-9790-85CBBF6630E9',
-          name: 'Nome do Tópico 1',
-          type: 'Aula'
-        },
-        {
-          topicId: '501C7ED2-6120-418E-A622-8FC98C904C2C',
-          name: 'Nome do Tópico 2',
-          type: 'Atividade'
-        },
-        {
-          topicId: '7EB0638F-BB06-46AD-B674-90DDE2E4AA93',
-          name: 'Nome do Tópico 3',
-          type: 'Aula'
-        }]
-      }
-    ]
-  }
+  resultTrainingId: any;
+  listTopicIds: string[] = [];
 
-  constructor(private _snackBar: MatSnackBar) { }
+  constructor(private _snackBar: MatSnackBar, private _activatedRoute: ActivatedRoute, private _registrationService: RegistrationService) { }
 
-  ngOnInit() {
+  async ngOnInit(): Promise<void>{
     this.randomImage = this.photoList[Math.floor(Math.random() * this.photoList.length)];
+
+    await this._activatedRoute.params.subscribe((params) => {
+      if (params['id'] != undefined) {
+        this.trainingId = params['id'];
+        console.log('trainingId', this.trainingId);
+        this._registrationService.loadById(this.trainingId).then((data: any) => {
+          this.resultTrainingId = data;
+          if (this.resultTrainingId.active == false) this.buttonType = 'suspenso';
+          console.log(this.resultTrainingId);
+          data.modules.forEach((mod: any) => {
+            mod.topics.forEach((topic: any) => {
+              this.listTopicIds.push(topic.id);
+            });
+          });
+          console.log('listTopicIds', this.listTopicIds);
+        }
+        );
+
+      }
+    })
   }
 
   submitSubscription() {
     // TODO Depois inserir código para realizar a matrícula
-
-    console.log('Exemplo de dados que serão enviados para a matrícula: ', {
+    const registration = {
       UserId: this.userId,
-      TrainingId: this.mockTraining.trainingId,
-      TopicId: ['C14BAB10-0DEF-4962-9790-85CBBF6630E9',
-        '501C7ED2-6120-418E-A622-8FC98C904C2C',
-        '7EB0638F-BB06-46AD-B674-90DDE2E4AA93']
-    });
-    this.openSnackBar(this.mockTraining.name, 'matriculado');
+      TrainingId: this.resultTrainingId.id,
+      TopicIds: this.listTopicIds
+    };
+    this._registrationService.create(registration);
+    this.openSnackBar(this.resultTrainingId.name, 'matriculado');
   }
 
   cancelSubscription() {
@@ -80,12 +76,12 @@ export class TrainingRegistrationComponent implements OnInit {
 
     console.log('Exemplo de dados que serão enviados para a desmatricula: ', {
       UserId: this.userId,
-      TrainingId: this.mockTraining.trainingId,
+      TrainingId: this.resultTrainingId.trainingId,
       TopicId: ['C14BAB10-0DEF-4962-9790-85CBBF6630E9',
         '501C7ED2-6120-418E-A622-8FC98C904C2C',
         '7EB0638F-BB06-46AD-B674-90DDE2E4AA93']
     });
-    this.openSnackBar(this.mockTraining.name, 'não matriculado');
+    this.openSnackBar(this.resultTrainingId.name, 'não matriculado');
   }
 
   openSnackBar(trainingName: string, NewButtonType: string) {
