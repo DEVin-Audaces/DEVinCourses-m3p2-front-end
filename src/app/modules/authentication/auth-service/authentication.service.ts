@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { UsersService } from '../../public/services/user-service/user-service';
+import {Users} from "../../../interfaces/user";
+import { Login } from '../../../interfaces/login';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +18,13 @@ export class AuthenticationService {
   ) { }
 
 
-  public autenticar(email: string, senha: string): Observable<any> {
-
-  return this._http.get(
-    `${this.url}/users/LoginUser?Email=${email}&Password=${senha}`,{ observe: 'response' }).pipe(
-      catchError(this.handleError)
-    )
+  public autenticar(data: Login): Observable<any> {
+    return this._http.post(
+      `${this.url}/users/LoginUser`, data,{ observe: 'response' }).pipe(
+        catchError(this.handleError)
+      )
   }
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.status == 0)

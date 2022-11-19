@@ -4,6 +4,7 @@ import { Route, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/modules/authentication/auth-service/authentication.service';
 import {UsersService} from "../../services/user-service/user-service";
 //import { ModalService } from '../../../services/modal-service/modal.service';
+import { Login } from '../../../../interfaces/login';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   public userObj: any;
   hide = true;
   errorMsg:boolean = false;
-
+  public login!: {};
 
   formLogin: FormGroup = this._form.group({
     email: ['', [Validators.required, Validators.email]],
@@ -34,7 +35,10 @@ export class LoginComponent implements OnInit {
   }
 
   userLogin(){
-    this._loginService.autenticar(this.formLogin.value.email, this.formLogin.value.password)
+    const email: string = this.formLogin.value.email;
+    const password: string = this.formLogin.value.password;
+    const login: Login = {email: email, password: password}
+    this._loginService.autenticar(login)
     .subscribe(
       (response ) => {
           if(response.status != 200){
