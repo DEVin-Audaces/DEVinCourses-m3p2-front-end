@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FullpageComponent } from './layout/fullpage/fullpage.component';
-
-// import { HomeComponent } from './components/home/home.component';
-// import { TrainingComponent } from './components/training/training.component';
-// import { CreateTrainingComponent } from './trainings/create-training/create-training.component';
+import { TrainingRegistrationComponent } from './trainings/training-registration/training-registration.component';
+import { TrainingScreenComponent } from './trainings/training-screen/training-screen.component';
+import { CreateTrainingComponent } from './trainings/create-training/create-training.component';
 
 const routes: Routes = [
-  // {
-  //   path:'', component:FullpageComponent,
-  //   children:[
-  //     {path:'home', component:HomeComponent},
-  //     {path:'training', component: TrainingComponent}
-  //     {path:'create-training', component: CreateTrainingComponent}
-  //   ]
-  // }
+  {
+    path:'trainings', component:FullpageComponent,
+    children:[
+      {path:'home', component: TrainingScreenComponent}, // componente temporário para testes
+      {path:'watch', component:TrainingScreenComponent},
+      {path:'registration', component:TrainingRegistrationComponent},
+      {path:'create', component:CreateTrainingComponent},
+    ]
+  }
 ];
 
 @NgModule({
@@ -22,4 +22,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class PrivateRoutingModule { }
+export class PrivateRoutingModule { }
