@@ -1,9 +1,13 @@
 <div class="container-create-training">
     <div class="card-private">
-        <app-create-register (sendTrainingEvent)="onSendTraining()"></app-create-register>
+        <app-create-register></app-create-register>
     </div>
-    <div class="card-private modules" *ngIf="displayCreateModule == true">
-        <app-create-module></app-create-module>
-    </div>
-    <input class="btn btn-success btn-sm w-100" value="Salvar Treinamento" (click)="invokeChildren()" *ngIf="displayCreateModule == true" [disabled]="" />
+
+    <div #moduleContainer></div>
+
+    <button (click)="addElement()">Add</button>
+
+    <input class="btn btn-success btn-sm w-100" value="Salvar Treinamento" (click)="invokeChildren()" [disabled]="" />
+    <p class="warning-message" *ngIf="errorMessage">Formulário inválido. Reveja as informações.</p>
+
 </div>

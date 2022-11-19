@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Training } from 'src/app/interfaces/training';
 
@@ -8,8 +8,7 @@ import { Training } from 'src/app/interfaces/training';
   styleUrls: ['./create-register.component.scss']
 })
 export class CreateRegisterComponent implements OnInit {
-  @Output() sendTrainingEvent = new EventEmitter<Training>()
- 
+
   form: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -17,7 +16,7 @@ export class CreateRegisterComponent implements OnInit {
       name: ['', Validators.required],
       summary: ['', Validators.required],
       instructor: ['', Validators.required],
-      duration: ['', Validators.required],
+      duration: ['', [Validators.required, Validators.min(8)]],
     });
    }
 
@@ -25,13 +24,14 @@ export class CreateRegisterComponent implements OnInit {
     this.form.reset();
   }
 
-  addTraining() {
-      this.form.disable();
-      this.sendTrainingEvent.emit();
+  getTraining(): Training {
+    let training: Training = this.form.value;
+    this.form.disable();
+
+    return training;
   }
 
-  getTraining(): Training {
-    return this.form.value;
+  checkValidity(): boolean {
+    return this.form.valid;
   }
-  
 }
