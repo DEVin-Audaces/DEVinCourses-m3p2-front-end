@@ -2,26 +2,27 @@
   <section class="header">
     <div class="elements">
 
-      <img src="../../../assets/images/logo_audaces-1.svg" alt="Logo da Audaces" class ="logo">
-
+      <img src="../../../assets/images/logo_audaces-1.svg" alt="Logo da Audaces" class="logo">
       <div class="menu">
         <a class="menu_item" [routerLink]="['home']" routerLinkActive="active">
           <mat-icon class="home-icon" fontIcon="home"></mat-icon>
           <span>Início</span>
         </a>
         <a class="menu_item" [routerLink]="['watch']" routerLinkActive="active">
-          <mat-icon class="training-icon"  fontIcon="ondemand_video"></mat-icon>
+          <mat-icon class="training-icon" fontIcon="ondemand_video"></mat-icon>
           <span>Treinamentos</span>
         </a>
       </div>
 
     </div>
-    
+
     <div class="perfil">
-      <h3 class="perfil_nome">Aluno</h3>
-      <div class="perfil_avatar">
-        <mat-icon class="perfil-icon"  fontIcon="person"></mat-icon>
-      </div>
+      <a class="menu_item" [routerLink]="['profile']" routerLinkActive="active">
+        <h3 class="perfil_nome">Aluno</h3>
+        <div class="perfil_avatar">
+          <mat-icon class="perfil-icon" fontIcon="person"></mat-icon>
+        </div>
+      </a>
     </div>
   </section>
 
