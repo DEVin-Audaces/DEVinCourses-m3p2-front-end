@@ -23,9 +23,12 @@ export class UsersService {
     }
   }
 
-  createUser(data: Users): Observable<any>{
-      return this._http.post<any>(`${this.url}/users`, data);
-    }
+  public createUser(formData: Users){
+    this._http.post<Users>(`${this.url}/users/CreateUser`, formData).subscribe(x => this.userData$ = x
+    );
+    this.userSubject$.next(this.userData$);
+    return this.userSubject$.asObservable();
+  }
 
   getUser(): Observable<Users|null>{
     this._http.get<Users>(`${this.url}/users/UserProfile`).subscribe(
