@@ -17,7 +17,7 @@
         </ng-template>
       </div>
 
-      <div class="aside-content">
+      <div class="aside-content" >
         <app-content-module [modules]="training.modules!" (topic)="getTopic($event)"></app-content-module>
       </div>
     </div>
@@ -26,9 +26,9 @@
       <h3>Resumo: {{training.summary}}</h3>
       <h3>Professor: {{training.instructor}}</h3>
     </div>
-  </div>
-  <div class="complete-training">
-    <button (click)="onComplete()" mat-raised-button color="primary">Concluir Treinamento</button>
+    <div class="complete-training">
+      <button (click)="onComplete()" mat-raised-button color="primary">Concluir Treinamento</button>
+    </div>
   </div>
 
   <button [disabled]="trainingIsSuspended" *ngIf="userId == authorId" class="suspend-button btn btn-danger" (click)="suspendTraining()">Suspender treinamento</button>

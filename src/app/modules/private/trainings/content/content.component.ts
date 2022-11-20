@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Topic } from 'src/app/interfaces/topic';
 import { Training } from 'src/app/interfaces/training';
+import { TokenService } from 'src/app/modules/public/services/token-service/token.service';
 import { TrainingsService } from '../../services/trainings.service';
 
 @Component({
