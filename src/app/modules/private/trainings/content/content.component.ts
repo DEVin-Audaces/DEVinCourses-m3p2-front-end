@@ -46,7 +46,7 @@ export class ContentComponent implements OnInit {
     this.topic = topic;
   }
 
-  onComplete() {
+  onCompleteTraining() {
     this._trainingsService.completeTraining(this.userId, this.trainingId)
       .subscribe((response: any) => {
         console.log("aqui", response)
@@ -55,6 +55,17 @@ export class ContentComponent implements OnInit {
         } else if (response.body === 400) {
           alert("Nem todos os tópicos do curso foram concluídos. Favor concluir todas as atividades do treinamento")
         } else alert('Curso concluído com sucesso')
+      })
+  }
+
+  onCompleteTopic(){
+    console.log(this.userId)
+    this.topic && this._trainingsService.completeTopic(this.userId, this.topic.id)
+      .subscribe((response: any) => {
+        console.log("aqui", response)
+        if (response.status === 404) {
+          alert("Aluno não matriculado no curso")
+        } else alert('Tópico concluído com sucesso')
       })
   }
 }

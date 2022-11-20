@@ -49,11 +49,21 @@ export class TrainingsService {
 
   completeTraining(userId: string, trainingId: string): Observable<HttpResponse<any>> {
     return this._http.put(
-      `${this.url}/Trainings/Complete?UserId=${userId}&TrainingId=${trainingId}`, {}, { observe: 'response' })
+      `${this.url}/complete?UserId=${userId}&TrainingId=${trainingId}`, {}, { observe: 'response' })
       .pipe(
         tap(x => x),
         catchError(this.handleError<any>())
       );
   }
 
+  completeTopic(userId: string, topicId: string | undefined): Observable<HttpResponse<any>> {
+    const topicIdteste = "A970BD95-000B-48FE-8AC5-0B19620E904E"
+
+    return this._http.put(
+      `${this.url}/completeTopic/${userId}/${topicIdteste}`, {}, { observe: 'response' })
+      .pipe(
+        tap(x => x),
+        catchError(this.handleError<any>())
+      );
+  }
 } 
