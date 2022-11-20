@@ -1,3 +1,4 @@
+import { SafePipe } from './services/safe-url.service';
 import { ReportListComponent } from './trainings/report-list/report-list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FullpageComponent } from './layout/fullpage/fullpage.component';
@@ -31,7 +32,8 @@ import { ContentModuleComponent } from './trainings/content/content-module/conte
     TrainingRegistrationComponent,
     CreateTrainingComponent,
     ReportListComponent,
-    ContentModuleComponent
+    ContentModuleComponent,
+    SafePipe
   ],
   imports: [
     CommonModule,
