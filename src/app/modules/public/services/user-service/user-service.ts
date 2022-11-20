@@ -51,6 +51,16 @@ export class UsersService {
     );
   }
 
+  postImg(myFormData: any) {
+    this._http.put(`${this.url}/users/UploadImgUser`, myFormData , {
+      headers : {
+        'content-type': '*'
+      }
+    }).subscribe(data => {
+      console.log(data);
+    });
+  }
+
   public logout(): void{
     this._token.removeToken();
     this.userSubject$.next(null);
