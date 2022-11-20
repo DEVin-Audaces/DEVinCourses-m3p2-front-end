@@ -17,15 +17,17 @@
         </ng-template>
       </div>
 
-      <div class="aside-content">
+      <div class="aside-content" >
         <app-content-module [modules]="training.modules!" (topic)="getTopic($event)"></app-content-module>
       </div>
     </div>
-
+    
     <div class="footer-content-video">
       <h3>Resumo: {{training.summary}}</h3>
       <h4>Professor: {{training.instructor}}</h4>
     </div>
-
+    <div class="complete-training">
+      <button (click)="onComplete()" mat-raised-button color="primary">Concluir Treinamento</button>
+    </div>
   </div>
 </main>

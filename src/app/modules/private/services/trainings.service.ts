@@ -1,7 +1,7 @@
 import { Report } from './../../../interfaces/report';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of, tap } from 'rxjs';
 import { Training } from 'src/app/interfaces/training';
 import { environment } from 'src/environments/environment';
 import { RegisteredUsers } from 'src/app/interfaces/registeredUsers';
@@ -14,6 +14,14 @@ export class TrainingsService {
   private url = `${environment.API_URL}/trainings`;
 
   constructor(private _http: HttpClient) { }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error.error);
+
+      return of(error);
+    };
+  }
 
   public getReport(): Observable<Report[]> {
     return this._http.get<Report[]>(`${this.url}/report`);
@@ -32,11 +40,20 @@ export class TrainingsService {
   }
 
   public suspendTraining(trainingId: string): Observable<any> {
-    return this._http.put(`${this.url}/suspend/${trainingId}`,{});
+    return this._http.put(`${this.url}/suspend/${trainingId}`, {});
   }
 
   public getAllTrainings(): Observable<Training[]> {
     return this._http.get<Training[]>(this.url);
+  }
+
+  completeTraining(userId: string, trainingId: string): Observable<HttpResponse<any>> {
+    return this._http.put(
+      `${this.url}/Trainings/Complete?UserId=${userId}&TrainingId=${trainingId}`, {}, { observe: 'response' })
+      .pipe(
+        tap(x => x),
+        catchError(this.handleError<any>())
+      );
   }
 
 } 
