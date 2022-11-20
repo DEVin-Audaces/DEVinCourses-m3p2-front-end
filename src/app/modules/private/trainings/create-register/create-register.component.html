@@ -1,0 +1,24 @@
+<div class="register-training__container">
+  <div class="column">
+    <form class="form" [formGroup]="form">
+      <input formControlName="name" placeholder="Nome do Treinamento" type="text" />
+      <p *ngIf="form.get('name')?.errors?.['required'] && form.get('name')?.touched" class="warning-message">Campo
+        obrigatório</p>
+      <input formControlName="instructor" placeholder="Professor" type="text" />
+      <p *ngIf="form.get('instructor')?.errors?.['required'] && form.get('instructor')?.touched"
+        class="warning-message">
+        Professor obrigatório</p>
+      <input formControlName="duration" placeholder="Duração" type="number" min="8" max="100" />
+      <p *ngIf="form.get('duration')?.errors?.['required'] && form.get('duration')?.touched" class="warning-message">
+        Duração obrigatória</p>
+    </form>
+  </div>
+  <div class="column">
+    <form class="form" [formGroup]="form">
+      <textarea class="formControl" rows="3" formControlName="summary" placeholder="Resumo do Treinamento"
+        type="text"></textarea>
+      <p *ngIf="form.get('summary')?.errors?.['required'] && form.get('summary')?.touched" class="warning-message">
+        Resumo obrigatório</p>
+    </form>
+  </div>
+</div>

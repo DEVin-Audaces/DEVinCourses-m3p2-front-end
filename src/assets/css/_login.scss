@@ -1,0 +1,25 @@
+.container{
+  background-color: white;
+  min-width: 60vh;
+  min-height: 53vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 15px;
+  padding: 4vh;
+  gap: 15px;
+}
+
+.title{
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bolder;
+  color: #0571b9;
+  margin-bottom: 2vh;
+}
+
+a{
+  cursor: pointer;
+  color: #0571b9;
+}

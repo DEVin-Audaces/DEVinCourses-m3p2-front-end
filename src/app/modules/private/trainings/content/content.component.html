@@ -1,0 +1,31 @@
+<main class="content-main">
+  <div class="video">
+    <div class="header-content-video">
+      <h1>Tópico: {{topic?.name}}</h1>
+      <h2>Duração: {{ training.duration}} h</h2>
+    </div>
+
+    <div class="content-container">
+
+      <div class="content">
+        <div *ngIf="topic?.type == 'lesson'; else activity">
+          <iframe [src]="topic?.content! | safe" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <ng-template #activity>
+          <p>{{topic?.content}}</p>
+        </ng-template>
+      </div>
+
+      <div class="aside-content">
+        <app-content-module [modules]="training.modules!" (topic)="getTopic($event)"></app-content-module>
+      </div>
+    </div>
+
+    <div class="footer-content-video">
+      <h3>Resumo: {{training.summary}}</h3>
+      <h4>Professor: {{training.instructor}}</h4>
+    </div>
+
+  </div>
+</main>

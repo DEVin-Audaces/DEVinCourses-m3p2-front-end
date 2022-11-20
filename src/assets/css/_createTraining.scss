@@ -1,0 +1,132 @@
+.register-training__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  background-color: whitesmoke;
+  border-radius: 12px;
+  
+  .column {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+
+    input, textarea {
+        outline: none;
+        font-size: 1em;
+        width: 100%;
+        margin: 6px 0 6px 0;
+        padding: 6px;
+        border: none;
+        border-radius: 5px;
+      }
+
+    input:focus, textarea:focus {
+      box-shadow: inset 0px 0px 0px 1px #3C8AFF ;
+    }
+
+    textarea {
+      min-height: 115px;
+    }
+  }
+
+}
+
+.create-module__container {
+  background-color: whitesmoke;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 2em;
+
+  .create-module__input {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  input:focus {
+    box-shadow: inset 0px 0px 0px 1px #3C8AFF ;
+  }
+
+  .create-module__header{
+    display: flex;
+    flex-grow: 1;
+    margin-top: 5px;
+
+    input {
+      outline: none;
+      flex-grow: 3;
+      padding: 6px;
+      border: none;
+      margin: 6px 0 6px 0;
+      border-radius: 5px;
+    }
+
+    button {
+      flex-grow: 1;
+      margin-left: 5px;
+      margin: 0 6px 0 6px ;
+      padding: 5px 0;
+      border: none;
+      background-color: #3C8AFF;
+      color: #FFFFFF;
+      border-radius: 5px;
+    }
+  }
+
+  .create-module__topics {
+    display: flex;
+    align-items: stretch;
+    flex-grow: 1;
+    margin-top: 5px;
+
+    input {
+      outline: none;
+      flex-grow: 3;
+      padding: 6px;
+      border: none;
+      margin: 6px 0 6px 0;
+      border-radius: 5px;
+    }
+
+    .create-module__topics__content {
+      margin-left: 5px;
+    }
+  }
+
+  .create-module__footer {
+    align-items: center;
+    button {
+      width: 100%;
+      margin: 5px;
+      padding: 5px 0;
+      border: none;
+      background-color: #3C8AFF;
+      color: #FFFFFF;
+      border-radius: 5px;
+    }
+  }
+}
+
+.create-training__container {
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+  gap: 1rem;
+
+  width: 70%;
+  margin: 0 auto;
+
+}
+
+.warning-message {
+  font-size: smaller;
+  color: red;
+  margin-bottom: 1px;
+  padding-left: 5px;
+}

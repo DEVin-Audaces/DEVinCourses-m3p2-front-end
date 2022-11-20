@@ -1,0 +1,25 @@
+<div class="container">
+  <div>
+    <h1 class="title">Login</h1>
+  </div>
+      <mat-form-field appearance="outline" [formGroup]="formLogin">
+          <mat-label>Digite seu email</mat-label>
+          <input matInput placeholder="pat@example.com" formControlName="email" required>
+          <mat-error *ngIf="errorMsg == false">Usuário incorreto!</mat-error>
+        </mat-form-field>
+      <mat-form-field appearance="outline" [formGroup]="formLogin">
+          <mat-label>Digite sua senha</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="errorMsg == false">Senha incorreta!</mat-error>
+        </mat-form-field>
+        <mat-error *ngIf="errorMsg ">Usuário incorreto ou não cadastrado!</mat-error>
+      <div>
+        <p>Não possui cadastro? <a routerLink="cadastrar">Cadastrar</a></p>
+        <p>Esqueceu a senha? <a (click)="openModal()">Redefinir senha</a></p>
+      </div>
+      <button mat-flat-button color="primary" (click)="userLogin()" >Entrar </button>
+</div>
