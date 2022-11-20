@@ -3,16 +3,13 @@
   <div class="create-module__header" [formGroup]="moduleForm">
     <div class="create-module__input">
       <input formControlName="name" type="text" placeholder="Nome do módulo">
-
     </div>
-
     <button [disabled]="finished" (click)="addAssignment()">+ Atividade</button>
     <button [disabled]="finished" (click)="addLesson()">+ Aula</button>
   </div>
 
   <p *ngIf="moduleForm.get('name')?.errors?.['required'] &&
-  moduleForm.get('name')?.touched"
-  class="warning-message">Título obrigatório</p>
+  moduleForm.get('name')?.touched" class="warning-message">Título obrigatório</p>
 
   <div class="create-module__topics" *ngFor="let form of topicForms">
     <ng-container *ngIf="form.value.type== 'lesson'; then lesson; else assignment"></ng-container>
@@ -22,8 +19,7 @@
         <input formControlName="name" type="text" placeholder="Título da aula">
 
         <p *ngIf="form.get('name')?.errors?.['required'] &&
-        form.get('name')?.touched"
-        class="warning-message">Título obrigatório</p>
+        form.get('name')?.touched" class="warning-message">Título obrigatório</p>
       </div>
 
       <div class="create-module__input">
@@ -31,12 +27,10 @@
         <input formControlName="content" class="create-module__topics__content" type="url" placeholder="URL do vídeo">
 
         <p *ngIf="form.get('content')?.errors?.['required'] &&
-        form.get('content')?.touched"
-        class="warning-message">Vídeo obrigatório</p>
+        form.get('content')?.touched" class="warning-message">Vídeo obrigatório</p>
 
         <p *ngIf="form.get('content')?.errors?.['youtube'] &&
-        form.get('content')?.touched"
-        class="warning-message">Formato de vídeo inválido</p>
+        form.get('content')?.touched" class="warning-message">Formato de vídeo inválido</p>
       </div>
     </ng-template>
 
@@ -45,16 +39,14 @@
         <input formControlName="name" type="text" placeholder="Título da atividade">
 
         <p *ngIf="form.get('name')?.errors?.['required'] &&
-        form.get('name')?.touched"
-        class="warning-message">Título obrigatório</p>
+        form.get('name')?.touched" class="warning-message">Título obrigatório</p>
       </div>
 
       <div class="create-module__input">
         <input formControlName="content" class="create-module__topics__content" type="text" placeholder="Conteúdo">
 
         <p *ngIf="form.get('content')?.errors?.['required'] &&
-        form.get('content')?.touched"
-        class="warning-message">Conteúdo obrigatório</p>
+        form.get('content')?.touched" class="warning-message">Conteúdo obrigatório</p>
       </div>
     </ng-template>
   </div>
