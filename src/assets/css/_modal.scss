@@ -1,6 +1,6 @@
 .container{
-  width: 50vh;
-  height: 40vh;
+  min-width: 50vh;
+  min-height: 40vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -13,8 +13,8 @@
   justify-content: center;
   flex-direction: column;
   gap: 15px;
-
 }
+
 
 .title{
   display: flex;

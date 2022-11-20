@@ -19,7 +19,7 @@
         <mat-error *ngIf="errorMsg ">Usuário incorreto ou não cadastrado!</mat-error>
       <div>
         <p>Não possui cadastro? <a routerLink="cadastrar">Cadastrar</a></p>
-        <p>Esqueceu a senha? <a>Redefinir senha</a></p>
+        <p>Esqueceu a senha? <a (click)="openModal()">Redefinir senha</a></p>
       </div>
       <button mat-flat-button color="primary" (click)="userLogin()" >Entrar </button>
 </div>
