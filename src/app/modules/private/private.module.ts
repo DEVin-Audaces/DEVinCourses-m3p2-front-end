@@ -20,6 +20,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { ContentModuleComponent } from './trainings/content/content-module/content-module.component';
 import { InitialScreenComponent } from './trainings/initial-screen/initial-screen.component';
+import { ProfileComponent } from './profile/profile.component';
+import { TrainingCardComponent } from './components/training-card/training-card.component';
+import { TrainingModalComponent } from './components/training-modal/training-modal.component';
 
 
 @NgModule({
@@ -35,7 +38,10 @@ import { InitialScreenComponent } from './trainings/initial-screen/initial-scree
     ReportListComponent,
     ContentModuleComponent,
     InitialScreenComponent,
-    SafePipe
+    SafePipe,
+    ProfileComponent,
+    TrainingCardComponent,
+    TrainingModalComponent
   ],
   imports: [
     CommonModule,

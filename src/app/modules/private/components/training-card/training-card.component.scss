@@ -1,16 +1,12 @@
-.modelo1 {
-    box-shadow: 8px 8px 0px #154580;
-}
+  .card {
+      width: 250px;
+      transition: 0.5s all;
 
-.modelo2 {
-    box-shadow: 8px 8px 0px #6BD1FF;
-}
+      box-shadow: 2px 3px 45px -14px #000000;
+      margin: 5px;
+  }
 
-.modelo3 {
-    box-shadow: 8px 8px 0px #84EEC1;
-}
-
-
-.pensamento-p {
-    width: 262px;
+  .card:hover {
+      transform: scale(1.2);
+      box-shadow: 2px 3px 45px -4px #000000;
   }
