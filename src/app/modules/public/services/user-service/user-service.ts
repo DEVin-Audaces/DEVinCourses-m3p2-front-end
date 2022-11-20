@@ -18,9 +18,9 @@ export class UsersService {
     private _token: TokenService,
     private _http: HttpClient
   ) {
-    // if(this._token.hasToken()){
-    //   this.getUser();
-    // }
+       if(this._token.hasToken()){
+       this.getUser();
+     }
   }
 
   public createUser(formData: Users){
