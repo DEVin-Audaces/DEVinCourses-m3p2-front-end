@@ -1,10 +1,8 @@
-<div class="content">
-    <div class="main" *ngFor="let module of mock ; let i = index">
+<main class="main-content">
+    <div class="content" *ngFor="let module of mock ; let i = index">
         <h2 (click)="showLesson(module.id!,i)">{{module.name}}</h2>
-
         <div *ngIf="isHidden[i]">
             <h4 *ngFor="let topic of module.topics" (click)="openTopic(topic)" >{{topic.name}}</h4>
         </div>
-        
     </div>
-</div>
+</main>
