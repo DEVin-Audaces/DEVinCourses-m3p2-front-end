@@ -1,8 +1,0 @@
-<main class="main-content">
-    <div class="content" *ngFor="let module of modules ; let i = index">
-        <h2 (click)="showModule(i)">{{module.name}}</h2>
-        <div *ngIf="isHidden[i]">
-            <h4 *ngFor="let topic of module.topics" (click)="openTopic(topic)" >{{topic.name}}</h4>
-        </div>
-    </div>
-</main>
