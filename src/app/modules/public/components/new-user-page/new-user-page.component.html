@@ -1,49 +1,55 @@
 <div class="form">
 
-  <form [formGroup]="newUser" (ngSubmit)="submitForm()">
-      <h1> Cadastro</h1>
-      <br>
-      <div class="nameEmail">
-          <p>Nome completo</p>
-          <input type="text" formControlName="name" placeholder="Digite seu nome completo">
-          <br> <span class="alert"
-              *ngIf="newUser.get('name')?.errors && (newUser.get('name')?.touched && newUser.get('name')?.dirty)">Campo obrigatório, digite somente letras</span>
-          <p>E-mail</p>
-          <input type="email" formControlName="email" placeholder="exemplo@gmail.com">
-          <br> <span class="alert"
-              *ngIf="newUser.get('email')?.errors && (newUser.get('email')?.touched && newUser.get('email')?.dirty)"> Digite um e-mail valido</span>
-      </div>
+    <form [formGroup]="newUser" (ngSubmit)="submitForm()">
+        <h1 *ngIf="registration">Cadastro</h1>
+        <h1 *ngIf="edit">Editar Usuário</h1>
+        <br>
+        <div *ngIf="edit">
+            <p>Adicionar foto de Perfil</p>
+            <input class="uploadImg" type="file" (change)="onFileSelected($event)">
+        </div>
+        <div class="nameEmail">
+            <p>Nome completo</p>
+            <input type="text" formControlName="name" placeholder="Digite seu nome completo">
+            <br> <span class="alert"
+                *ngIf="newUser.get('name')?.errors && (newUser.get('name')?.touched && newUser.get('name')?.dirty)">Campo obrigatório, digite somente letras</span>
+            <p>E-mail</p>
+            <input type="email" formControlName="email" placeholder="exemplo@gmail.com">
+            <br> <span class="alert"
+                *ngIf="newUser.get('email')?.errors && (newUser.get('email')?.touched && newUser.get('email')?.dirty)"> Digite um e-mail valido</span>
+        </div>
 
-      <div class="duascolunas">
-          <div>
-              <div>
-                  <p>Idade</p>
-                  <input type="number" formControlName="age">
-              </div>
-              <div>
-                <p>Senha</p>
-                <input type="password" formControlName="password">
-                <br> <span class="alert"
-                    *ngIf="newUser.get('password')?.errors && (newUser.get('password')?.touched && newUser.get('password')?.dirty)">
-                    Mínimo 8 dígitos </span>
-            </div>
-          </div>
-          <div>
+        <div class="duascolunas">
             <div>
-              <p>CPF</p>
-              <input type="number" formControlName="cpf">
-          </div>
-              <div>
-                  <p>Confirmar senha</p>
-                  <input type="password" formControlName="passwordRepeat">
-                  <br> <span class="alert" *ngIf="newUser.value.password != newUser.value.passwordRepeat">As senhas devem ser iguais</span>
+                <div>
+                    <p *ngIf="registration">Idade</p>
+                    <input type="number" formControlName="age">
+                </div>
+                <div>
+                  <p>Senha</p>
+                  <p *ngIf="edit">Senha original ou senha nova</p>
+                  <input type="password" formControlName="password" [disabled]="edit">
+                  <br> <span class="alert"
+                      *ngIf="newUser.get('password')?.errors && (newUser.get('password')?.touched && newUser.get('password')?.dirty)">
+                      Mínimo 8 dígitos </span>
               </div>
-          </div>
-      </div>
+            </div>
+            <div>
+              <div>
+                <p>CPF</p>
+                <input type="number" formControlName="cpf">
+            </div>
+                <div>
+                    <p>Confirmar senha</p>
+                    <input type="password" formControlName="passwordRepeat" [disabled]="edit">
+                    <br> <span class="alert" *ngIf="newUser.value.password != newUser.value.passwordRepeat">As senhas devem ser iguais</span>
+                </div>
+            </div>
+        </div>
 
-      <p class="link">Já tem cadastro? <a routerLink="/">Clique aqui</a></p>
-      <br>
-      <button [ngClass]="{'disabled' : newUser.invalid }"
-          [disabled]="newUser.invalid || newUser.value.password != newUser.value.passwordRepeat"> Confirmar</button>
-  </form>
+        <p class="link">Já tem cadastro? <a routerLink="/">Clique aqui</a></p>
+        <br>
+        <button [ngClass]="{'disabled' : newUser.invalid }"
+            [disabled]="newUser.invalid || newUser.value.password != newUser.value.passwordRepeat"> Confirmar</button>
+    </form>
 </div>

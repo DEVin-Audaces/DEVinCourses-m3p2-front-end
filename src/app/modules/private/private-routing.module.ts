@@ -4,6 +4,7 @@ import { FullpageComponent } from './layout/fullpage/fullpage.component';
 import { TrainingRegistrationComponent } from './trainings/training-registration/training-registration.component';
 import { TrainingScreenComponent } from './trainings/training-screen/training-screen.component';
 import { CreateTrainingComponent } from './trainings/create-training/create-training.component';
+import { NewUserPageComponent } from '../public/components/new-user-page/new-user-page.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,8 @@ const routes: Routes = [
       {path:'watch', component:TrainingScreenComponent},
       {path:'registration/:id', component:TrainingRegistrationComponent},
       {path:'create', component:CreateTrainingComponent},
+      {path:'EditUser/:id', component:NewUserPageComponent},
+
     ]
   }
 ];
