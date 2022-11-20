@@ -1,0 +1,27 @@
+.main-content {
+    width: 300px;
+    height: 444px;
+    .content {
+        margin: 1em;
+        cursor: pointer;
+        box-shadow: 10px 10px #ccddee;
+        h2 {
+            background-color: #1475d5;
+            color: #ffffff;
+            padding: 5px 0px 5px 15px;
+            border-radius: 6px 6px 0px 0px;
+            margin: 0px;
+        }
+        h4 {
+            padding: 5px 0px 5px 15px;
+            color: #000;
+            background-color: #f8f8f8;
+            margin: 0px;
+
+            &:hover {
+                background-color: #dbedff;
+                color: #1475d5
+            }
+        }
+    }
+}

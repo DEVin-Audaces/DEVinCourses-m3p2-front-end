@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of } from 'rxjs';
 import { Users } from 'src/app/interfaces/user';
 import { environment } from 'src/environments/environment';
 import { TokenService } from '../token-service/token.service';
@@ -18,9 +18,9 @@ export class UsersService {
     private _token: TokenService,
     private _http: HttpClient
   ) {
-    if(this._token.hasToken()){
-      this.getUser();
-    }
+       if(this._token.hasToken()){
+       this.getUser();
+     }
   }
 
   public createUser(formData: Users){
@@ -45,6 +45,22 @@ export class UsersService {
       this.userSubject$.next(this.userData$);
   }
 
+  changeUserPassword(email:string, password: string):Observable<any>{
+    return this._http.put(`${this.url}/users/ResetPassword/`, {email, password}, {observe: 'response'}).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  postImg(myFormData: any) {
+    this._http.put(`${this.url}/users/UploadImgUser`, myFormData , {
+      headers : {
+        'content-type': '*'
+      }
+    }).subscribe(data => {
+      console.log(data);
+    });
+  }
+
   public logout(): void{
     this._token.removeToken();
     this.userSubject$.next(null);
@@ -57,10 +73,11 @@ export class UsersService {
     this._token.saveToken(token);
   }
 
-  changeUserPassword(email:string, password: string):Observable<any>{
-    return this._http.post(`${this.url}/users/ResetPassword/`, {email, password});
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.status == 0)
+      return of({ status: 600, body: "Unexpected error. If this problem persists, please contact ..." })
+    else      return of({ status: error.status, body: error.error });
   }
-
-
 
 }

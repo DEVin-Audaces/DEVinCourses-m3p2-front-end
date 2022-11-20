@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/modules/authentication/auth-service/authentication.service';
 import {UsersService} from "../../services/user-service/user-service";
-//import { ModalService } from '../../../services/modal-service/modal.service';
 import { Login } from '../../../../interfaces/login';
+import { ModalService } from '../../services/modal-service/modal.service';
 
 
 @Component({
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
               private _router: Router,
               private _loginService: AuthenticationService,
               private _userService: UsersService,
-            //  private _modal: ModalService
+              private _modal: ModalService
             ) { }
 
   ngOnInit(): void {
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
     )
   }
 
-//openModal() {
-//    this._modal.open();
-//  }
+  openModal() {
+    this._modal.open();
+  }
 }
