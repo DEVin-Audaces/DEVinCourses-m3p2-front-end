@@ -22,4 +22,4 @@ export class TrainingsService {
     return this._http.get<Training[]>(this.url);
   }
 
-}
+} 

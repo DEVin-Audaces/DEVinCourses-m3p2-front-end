@@ -23,4 +23,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class PrivateRoutingModule { }
+export class PrivateRoutingModule { } 

@@ -10,7 +10,7 @@ describe('InitialScreenComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ InitialScreenComponent ]
     })
-    .compileComponents();
+    .compileComponents(); 
 
     fixture = TestBed.createComponent(InitialScreenComponent);
     component = fixture.componentInstance;

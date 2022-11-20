@@ -47,4 +47,4 @@ import { InitialScreenComponent } from './trainings/initial-screen/initial-scree
     MatCardModule
   ]
 })
-export class PrivateModule { }
+export class PrivateModule { } 
