@@ -1,3 +1,10 @@
+.warning-message {
+  font-size: smaller;
+  color: red;
+  margin-bottom: 1px;
+  padding-left: 5px;
+}
+
 .register-training__container {
   display: flex;
   flex-direction: row;
@@ -29,7 +36,7 @@
     }
 
     textarea {
-      min-height: 115px;
+      min-height: 120px;
     }
   }
 
@@ -42,6 +49,15 @@
   flex-direction: column;
   align-items: stretch;
   padding: 2em;
+
+  input {
+    outline: none;
+    //flex-grow: 3;
+    padding: 6px;
+    border: none;
+    margin: 0 6px 0 6px;
+    border-radius: 5px;
+  }
 
   .create-module__input {
     display: flex;
@@ -56,16 +72,7 @@
   .create-module__header{
     display: flex;
     flex-grow: 1;
-    margin-top: 5px;
-
-    input {
-      outline: none;
-      flex-grow: 3;
-      padding: 6px;
-      border: none;
-      margin: 6px 0 6px 0;
-      border-radius: 5px;
-    }
+    margin: 5px 0 5px 0;
 
     button {
       flex-grow: 1;
@@ -83,32 +90,20 @@
     display: flex;
     align-items: stretch;
     flex-grow: 1;
-    margin-top: 5px;
-
-    input {
-      outline: none;
-      flex-grow: 3;
-      padding: 6px;
-      border: none;
-      margin: 6px 0 6px 0;
-      border-radius: 5px;
-    }
-
-    .create-module__topics__content {
-      margin-left: 5px;
-    }
+    margin: 5px 0 5px 0;
   }
 
   .create-module__footer {
     align-items: center;
+    margin: 5px;
     button {
       width: 100%;
-      margin: 5px;
+      margin: 6px 0 6px 0;
       padding: 5px 0;
       border: none;
       background-color: #3C8AFF;
       color: #FFFFFF;
-      border-radius: 5px;
+      border-radius: 4px;
     }
   }
 }
@@ -116,17 +111,8 @@
 .create-training__container {
   display: flex;
   flex-direction: column;
-  padding: 4rem;
+  padding: 2rem;
   gap: 1rem;
-
-  width: 70%;
+  width: 60%;
   margin: 0 auto;
-
-}
-
-.warning-message {
-  font-size: smaller;
-  color: red;
-  margin-bottom: 1px;
-  padding-left: 5px;
 }

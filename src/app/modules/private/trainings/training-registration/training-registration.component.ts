@@ -86,6 +86,16 @@ export class TrainingRegistrationComponent implements OnInit {
         '501C7ED2-6120-418E-A622-8FC98C904C2C',
         '7EB0638F-BB06-46AD-B674-90DDE2E4AA93']
     });
+    
+    console.log(this.userId)
+    this._registrationService.unRegisterTraining(this.userId, this.trainingId)
+    .subscribe((response: any) => {
+      console.log("aqui", response)
+      if (response.status === 404) {
+        alert("Aluno não matriculado no curso")
+      } else alert('Tópico concluído com sucesso')
+    })
+
     this.openSnackBar(this.resultTrainingId.name, 'não matriculado');
   }
 
