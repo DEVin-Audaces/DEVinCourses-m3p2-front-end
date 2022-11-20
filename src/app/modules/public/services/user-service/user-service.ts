@@ -63,17 +63,11 @@ export class UsersService {
     this._token.saveToken(token);
   }
 
-  changeUserPassword(email:string, password: string):Observable<any>{
-    return this._http.post(`${this.url}/users/ResetPassword/`, {email, password});
-  }
-
 
   private handleError(error: HttpErrorResponse) {
     if (error.status == 0)
       return of({ status: 600, body: "Unexpected error. If this problem persists, please contact ..." })
     else      return of({ status: error.status, body: error.error });
   }
-
-
 
 }
