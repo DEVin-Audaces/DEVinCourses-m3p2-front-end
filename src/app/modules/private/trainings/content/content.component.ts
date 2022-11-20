@@ -13,37 +13,39 @@ import { TrainingsService } from '../../services/trainings.service';
 })
 export class ContentComponent implements OnInit {
 
-  public duration: string = '5:00';
-
-  public title: string = 'Introdução ao JavaScript';
-
-  public summary: string = 'Este curso prepara você para aprender JS.';
-
-  public instructor: string = 'Jamil';
-
   public training$!: Observable<Training>;
   public training!: Training;
   public topic?: Topic;
 
-  private trainingId = "";
-  private userId = "";
+  public trainingId!: string;
+  public userId!: string;
+  public authorId!: string;
+  public trainingIsSuspended!: boolean;
 
-  constructor(private _trainingsService: TrainingsService, private _activatedRoute: ActivatedRoute,
-    private _tokenService: TokenService) { }
+  constructor(private _trainingsService: TrainingsService,
+              private _activatedRoute: ActivatedRoute,
+              private _jwtService: TokenService) { }
 
   ngOnInit(): void {
     this.trainingId = this._activatedRoute.snapshot.params['id'];
+    this.userId = this._jwtService.returnJwtData().id;
 
     this.training$ = this._trainingsService.getTrainingById(this.trainingId);
 
-    this.training$.subscribe(training => this.training = training);
+    this.training$.subscribe(training => {
+      this.training = training;
+      this.authorId = training.author!;
+      this.trainingIsSuspended = !training.active!;
+    });
 
-    const user: any = this._tokenService.returnJwtData();
-    this.userId = user.jti;
   }
 
   public getTopic(topic: Topic): void {
     this.topic = topic;
+  }
+
+  public suspendTraining() {
+    this._trainingsService.suspendTraining(this.trainingId).subscribe();
   }
 
   onComplete() {

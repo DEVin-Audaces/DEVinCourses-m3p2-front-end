@@ -24,7 +24,7 @@
 
     .report__body {
 
-      tr:nth-child(2) {
+      tr:nth-child(2n) {
         background-color: #F1F1F1;
       }
 
