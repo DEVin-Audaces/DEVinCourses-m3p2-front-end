@@ -1,4 +1,7 @@
+import { Observable } from 'rxjs';
+import { TrainingsService } from '../../services/trainings.service';
 import { Component, OnInit } from '@angular/core';
+import { Report } from 'src/app/interfaces/report';
 
 @Component({
   selector: 'app-report-list',
@@ -7,47 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportListComponent implements OnInit {
 
-  mockCursos: Array<any>;
+  public reports!: Observable<Report[]>;
 
-  constructor() { 
-
-    this.mockCursos = [
-      {
-        name: "Curso 1",
-        duration: 8,
-        finished_students: 87,
-        active: true
-      },
-      {
-        name: "Curso 2",
-        duration: 12,
-        finished_students: 413,
-        active: false
-      },
-      {
-        name: "Curso 3",
-        duration: 9,
-        finished_students: 312,
-        active: true
-      },
-      {
-        name: "Curso 4",
-        duration: 16,
-        finished_students: 642,
-        active: false
-      },
-      {
-        name: "Curso 5",
-        duration: 12,
-        finished_students: 127,
-        active: false
-      }
-];
- 
-}
+  constructor(private _trainingsService: TrainingsService) { }
 
   ngOnInit(): void {
-   
+    this.reports = this._trainingsService.getReport();
   }
 
 }
