@@ -12,6 +12,10 @@
           <mat-icon class="training-icon" fontIcon="ondemand_video"></mat-icon>
           <span>Treinamentos</span>
         </a>
+        <a class="menu_item" [routerLink]="['profile']" routerLinkActive="active">
+          <mat-icon class="training-icon" fontIcon="ondemand_video"></mat-icon>
+          <span>Meus Treinamentos</span>
+        </a>
         <a class="menu_item" [routerLink]="['create-training']" routerLinkActive="active">
           <mat-icon class="register-icon"  fontIcon="app_registration"></mat-icon>
           <span>Cadastrar</span>
@@ -25,7 +29,7 @@
     </div>
 
     <div class="perfil">
-      <a class="menu_item" [routerLink]="['profile']" routerLinkActive="active">
+      <a class="menu_item">
         <h3 class="perfil_nome">Aluno</h3>
         <div class="perfil_avatar">
           <mat-icon class="perfil-icon" fontIcon="person"></mat-icon>
