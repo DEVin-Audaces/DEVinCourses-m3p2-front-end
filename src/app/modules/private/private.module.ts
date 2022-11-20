@@ -18,6 +18,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { ContentModuleComponent } from './trainings/content/content-module/content-module.component';
+import { InitialScreenComponent } from './trainings/initial-screen/initial-screen.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ContentModuleComponent } from './trainings/content/content-module/conte
     TrainingRegistrationComponent,
     CreateTrainingComponent,
     ReportListComponent,
-    ContentModuleComponent
+    ContentModuleComponent,
+    InitialScreenComponent
   ],
   imports: [
     CommonModule,
