@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Topic } from 'src/app/interfaces/topic';
 import { Training } from 'src/app/interfaces/training';
+import { TokenService } from 'src/app/modules/public/services/token-service/token.service';
 import { TrainingsService } from '../../services/trainings.service';
 
 @Component({
@@ -24,18 +25,36 @@ export class ContentComponent implements OnInit {
   public training!: Training;
   public topic?: Topic;
 
-  constructor(private _trainingsService: TrainingsService, private _activatedRoute: ActivatedRoute) { }
+  private trainingId = "";
+  private userId = "";
+
+  constructor(private _trainingsService: TrainingsService, private _activatedRoute: ActivatedRoute,
+    private _tokenService: TokenService) { }
 
   ngOnInit(): void {
-    const id = this._activatedRoute.snapshot.params['id'];
+    this.trainingId = this._activatedRoute.snapshot.params['id'];
 
-    this.training$ = this._trainingsService.getTrainingById(id);
+    this.training$ = this._trainingsService.getTrainingById(this.trainingId);
 
     this.training$.subscribe(training => this.training = training);
+
+    const user: any = this._tokenService.returnJwtData();
+    this.userId = user.jti;
   }
 
   public getTopic(topic: Topic): void {
     this.topic = topic;
   }
 
+  onComplete() {
+    this._trainingsService.completeTraining(this.userId, this.trainingId)
+      .subscribe((response: any) => {
+        console.log("aqui", response)
+        if (response.status === 404) {
+          alert("Aluno não matriculado no curso")
+        } else if (response.body === 400) {
+          alert("Nem todos os tópicos do curso foram concluídos. Favor concluir todas as atividades do treinamento")
+        } else alert('Curso concluído com sucesso')
+      })
+  }
 }

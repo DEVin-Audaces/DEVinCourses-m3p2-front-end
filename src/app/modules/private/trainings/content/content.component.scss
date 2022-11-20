@@ -1,1 +1,12 @@
 @import "../../../../../assets/css/contentVideo";
+
+.content-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.complete-training {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
