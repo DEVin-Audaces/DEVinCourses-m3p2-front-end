@@ -1,0 +1,38 @@
+<body>
+    <div class="bannerAudaces">
+        <img src="assets/images/bannerAudaces.png" class="imgBannerAudaces">
+    </div> 
+
+    <div>
+        <h1 class="cursos">Categorias</h1>
+    </div>
+
+    <div class="card-group">
+        <div class="card" *ngFor="let curso of trainings | async; let i = index ">
+            <img src="{{photos[i]}}" class="card-img-top" alt="...">
+            <a [routerLink]="['/main/registration', curso.id]" class="nomeCurso">{{curso.name}}</a>
+    </div>
+        
+    </div>
+
+    <div class="panel">
+        <div class="pontuacao">
+            <div class="suaPontuacao">
+                <h2>Sua Pontuação</h2>
+            </div>
+        </div>
+       
+        <div class="grade">
+            <h1 class="nota">83</h1>
+        </div>
+    </div>
+
+    <div class="button">
+        <button type="button" class="btn btn-primary">Todas as Categorias</button>
+    </div>
+
+    <footer class="footer">
+        <a class="ondeParou">Continue de onde parou</a>
+    </footer>
+
+</body>
