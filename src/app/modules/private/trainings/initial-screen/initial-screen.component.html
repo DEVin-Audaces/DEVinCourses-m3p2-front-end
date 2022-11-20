@@ -10,7 +10,7 @@
     <div class="card-group">
         <div class="card" *ngFor="let curso of trainings | async; let i = index ">
             <img src="{{photos[i]}}" class="card-img-top" alt="...">
-            <a [routerLink]="['/main/trainings/registration', curso.id]" class="nomeCurso">{{curso.name}}</a>
+            <a [routerLink]="['/main/registration', curso.id]" class="nomeCurso">{{curso.name}}</a>
     </div>
         
     </div>
