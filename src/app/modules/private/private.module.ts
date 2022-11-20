@@ -1,3 +1,4 @@
+import { SafePipe } from './services/safe-url.service';
 import { ReportListComponent } from './trainings/report-list/report-list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FullpageComponent } from './layout/fullpage/fullpage.component';
@@ -18,6 +19,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { ContentModuleComponent } from './trainings/content/content-module/content-module.component';
+import { InitialScreenComponent } from './trainings/initial-screen/initial-screen.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { ContentModuleComponent } from './trainings/content/content-module/conte
     TrainingRegistrationComponent,
     CreateTrainingComponent,
     ReportListComponent,
-    ContentModuleComponent
+    ContentModuleComponent,
+    InitialScreenComponent,
+    SafePipe
   ],
   imports: [
     CommonModule,
@@ -45,4 +49,4 @@ import { ContentModuleComponent } from './trainings/content/content-module/conte
     MatCardModule
   ]
 })
-export class PrivateModule { }
+export class PrivateModule { } 
