@@ -7,15 +7,17 @@ import { TrainingScreenComponent } from './trainings/training-screen/training-sc
 import { CreateTrainingComponent } from './trainings/create-training/create-training.component';
 import { InitialScreenComponent } from './trainings/initial-screen/initial-screen.component';
 import { ReportListComponent } from './trainings/report-list/report-list.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
-    path:'', component:FullpageComponent,
-    children:[
-      {path:'home', component: InitialScreenComponent},
-      {path:'registration/:id', component:TrainingRegistrationComponent},
+    path: '', component: FullpageComponent,
+    children: [
+      { path: 'home', component: InitialScreenComponent },
+      { path: 'registration/:id', component: TrainingRegistrationComponent },
       { path: 'report', component: ReportListComponent },
-      { path: 'create-training', component: CreateTrainingComponent},
+      { path: 'create-training', component: CreateTrainingComponent },
+      { path: 'profile', component: ProfileComponent },
       { path: ':id', component: ContentComponent }
     ]
   }
