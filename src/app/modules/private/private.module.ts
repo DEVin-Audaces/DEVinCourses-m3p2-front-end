@@ -1,3 +1,4 @@
+import { ReportListComponent } from './trainings/report-list/report-list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FullpageComponent } from './layout/fullpage/fullpage.component';
 import { NgModule } from '@angular/core';
@@ -16,6 +17,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
+import { ContentModuleComponent } from './trainings/content/content-module/content-module.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { MatCardModule } from '@angular/material/card';
     ContentComponent,
     CreateRegisterComponent,
     TrainingRegistrationComponent,
-    CreateTrainingComponent
+    CreateTrainingComponent,
+    ReportListComponent,
+    ContentModuleComponent
   ],
   imports: [
     CommonModule,
