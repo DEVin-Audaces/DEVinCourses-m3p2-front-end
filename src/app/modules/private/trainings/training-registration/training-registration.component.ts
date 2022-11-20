@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserJwtData } from 'src/app/interfaces/userJwtData';
 import { TokenService } from 'src/app/modules/public/services/token-service/token.service';
 import { RegistrationService } from '../../services/registration.service';
@@ -36,7 +36,11 @@ export class TrainingRegistrationComponent implements OnInit {
   resultTrainingId: any;
   listTopicIds: string[] = [];
 
-  constructor(private _snackBar: MatSnackBar, private _activatedRoute: ActivatedRoute, private _registrationService: RegistrationService, private _tokenService: TokenService) { }
+  constructor(private _snackBar: MatSnackBar,
+    private _activatedRoute: ActivatedRoute,
+    private _registrationService:RegistrationService,
+    private _tokenService: TokenService,
+    private _router: Router) { }
 
   async ngOnInit(): Promise<void>{
     this.randomImage = this.photoList[Math.floor(Math.random() * this.photoList.length)];
@@ -95,4 +99,8 @@ export class TrainingRegistrationComponent implements OnInit {
     }
   }
 
+  public accessTraining(): void {
+    const id = this._activatedRoute.snapshot.params['id'];
+    this._router.navigateByUrl(`/trainings/${id}`);
+  }
 }
