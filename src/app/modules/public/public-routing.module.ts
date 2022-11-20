@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import {LoginComponent} from "./components/login-component/login.component";
+import { NewUserPageComponent } from './components/new-user-page/new-user-page.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
     path:'',
     component: HomePageComponent,
     children:[
-      { path: '', component: LoginComponent }
+      { path: '', component: LoginComponent },
+      { path: 'cadastrar', component: NewUserPageComponent}
     ]
 
   },

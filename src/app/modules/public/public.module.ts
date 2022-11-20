@@ -4,13 +4,15 @@ import { SharedModule } from '../shared/shared.module';
 import { PublicRoutingModule } from './public-routing.module';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { LoginComponent } from './components/login-component/login.component';
+import { NewUserPageComponent } from './components/new-user-page/new-user-page.component';
 
 
 
 @NgModule({
   declarations: [
     HomePageComponent,
-    LoginComponent
+    LoginComponent,
+    NewUserPageComponent
   ],
   imports: [
     CommonModule,
