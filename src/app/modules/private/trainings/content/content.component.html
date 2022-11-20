@@ -1,25 +1,18 @@
-<div>
-
+<main class="content-main">
   <div class="video">
-    <div class="header-content">
-      <p>Título do Link</p>
-      <p>Duração</p>
+    <div class="header-content-video">
+      <h1>{{ title }}</h1>
+      <h2>{{ duration }}</h2>
     </div>
-    
     <div class="content-container">
-      
       <div class="content"></div>
-
       <div class="aside-content">
         <app-content-module></app-content-module>
       </div>
-
     </div>
-    
-    <div class="footer-content">
-      <p>Resumo</p>
-      <p>Professor</p>
+    <div class="footer-content-video">
+      <h3>{{ summary }}</h3>
+      <h4>Professor {{ instructor }}</h4>
     </div>
   </div>
-
-</div>
+</main>
