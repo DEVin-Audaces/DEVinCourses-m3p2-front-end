@@ -51,6 +51,16 @@ export class UsersService {
     );
   }
 
+  postImg(myFormData: any) {
+    this._http.put(`${this.url}/users/UploadImgUser`, myFormData , {
+      headers : {
+        'content-type': '*'
+      }
+    }).subscribe(data => {
+      console.log(data);
+    });
+  }
+
   public logout(): void{
     this._token.removeToken();
     this.userSubject$.next(null);
@@ -66,7 +76,6 @@ export class UsersService {
   changeUserPassword(email:string, password: string):Observable<any>{
     return this._http.post(`${this.url}/users/ResetPassword/`, {email, password});
   }
-
 
   private handleError(error: HttpErrorResponse) {
     if (error.status == 0)
