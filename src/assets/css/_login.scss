@@ -1,7 +1,7 @@
 .container{
   background-color: white;
-  width: 60vh;
-  height: 53vh;
+  min-width: 60vh;
+  min-height: 53vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
