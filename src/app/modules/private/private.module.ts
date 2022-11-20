@@ -1,3 +1,4 @@
+import { ReportListComponent } from './trainings/report-list/report-list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FullpageComponent } from './layout/fullpage/fullpage.component';
 import { NgModule } from '@angular/core';
@@ -9,7 +10,14 @@ import { TrainingScreenComponent } from 'src/app/modules/private/trainings/train
 import { ContentComponent } from 'src/app/modules/private/trainings/content/content.component';
 import { CreateRegisterComponent } from './trainings/create-register/create-register.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { TrainingRegistrationComponent } from './trainings/training-registration/training-registration.component';
+import { CreateTrainingComponent } from './trainings/create-training/create-training.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatCardModule } from '@angular/material/card';
+import { ContentModuleComponent } from './trainings/content/content-module/content-module.component';
 
 
 @NgModule({
@@ -19,13 +27,22 @@ import { ReactiveFormsModule } from '@angular/forms';
     CreateModuleComponent,
     TrainingScreenComponent,
     ContentComponent,
-    CreateRegisterComponent
+    CreateRegisterComponent,
+    TrainingRegistrationComponent,
+    CreateTrainingComponent,
+    ReportListComponent,
+    ContentModuleComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     PrivateRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSliderModule,
+    MatExpansionModule,
+    MatSnackBarModule,
+    MatTooltipModule,
+    MatCardModule
   ]
 })
 export class PrivateModule { }

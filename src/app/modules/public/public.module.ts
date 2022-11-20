@@ -6,6 +6,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { LoginComponent } from './components/login-component/login/login.component';
 import { ChangePasswordComponent } from './components/changePasswordModal/change-password.component';
 import { ModalService } from './services/modal-service/modal.service';
+import { NewUserPageComponent } from './components/new-user-page/new-user-page.component';
 
 
 
@@ -14,7 +15,9 @@ import { ModalService } from './services/modal-service/modal.service';
   declarations: [
     HomePageComponent,
     LoginComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    NewUserPageComponent
+
   ],
   imports: [
     CommonModule,
