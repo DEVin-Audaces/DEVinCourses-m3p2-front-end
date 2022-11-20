@@ -23,6 +23,13 @@ export class UsersService {
     // }
   }
 
+  public createUser(formData: Users){
+    this._http.post<Users>(`${this.url}/users/CreateUser`, formData).subscribe(x => this.userData$ = x
+    );
+    this.userSubject$.next(this.userData$);
+    return this.userSubject$.asObservable();
+  }
+
   getUser(): Observable<Users|null>{
     this._http.get<Users>(`${this.url}/users/UserProfile`).subscribe(
       x => this.userData$ = x
@@ -54,6 +61,10 @@ export class UsersService {
   }
   public saveToken(token: string): void {
     this._token.saveToken(token);
+  }
+
+  changeUserPassword(email:string, password: string):Observable<any>{
+    return this._http.post(`${this.url}/users/ResetPassword/`, {email, password});
   }
 
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Training } from 'src/app/interfaces/training';
 
 @Component({
   selector: 'app-create-register',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateRegisterComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
 
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      summary: ['', Validators.required],
+      instructor: ['', Validators.required],
+      duration: ['', [Validators.required, Validators.min(8)]],
+    });
+   }
+
+  ngOnInit() {
+    this.form.reset();
   }
 
+  getTraining(): Training {
+    let training: Training = this.form.value;
+    this.form.disable();
+
+    return training;
+  }
+
+  checkValidity(): boolean {
+    return this.form.valid;
+  }
 }

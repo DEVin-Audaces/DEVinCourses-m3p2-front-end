@@ -1,0 +1,27 @@
+.box-container {
+    padding: 20px;
+    margin: 30px 0px;
+    border-radius: 20px;
+    box-shadow: -2px 8px 25px -13px rgba(0, 0, 0, 0.76);
+    -webkit-box-shadow: -2px 8px 25px -13px rgba(0, 0, 0, 0.76);
+    -moz-box-shadow: -2px 8px 25px -13px rgba(0, 0, 0, 0.76);
+
+    .box-summary {
+        margin-top: 0px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    img {
+        border-radius: 10px;
+        margin-top: 0px;
+    }
+}
+
+.container{
+  padding-bottom: 50px;
+}
+.accordion-text {
+    font-size: 16px;
+}
