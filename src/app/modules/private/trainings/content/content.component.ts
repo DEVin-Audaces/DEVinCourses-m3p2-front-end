@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Topic } from 'src/app/interfaces/topic';
 import { Training } from 'src/app/interfaces/training';
+import { TokenService } from 'src/app/modules/public/services/token-service/token.service';
 import { TrainingsService } from '../../services/trainings.service';
 
 @Component({
@@ -12,30 +13,61 @@ import { TrainingsService } from '../../services/trainings.service';
 })
 export class ContentComponent implements OnInit {
 
-  public duration: string = '5:00';
-
-  public title: string = 'Introdução ao JavaScript';
-
-  public summary: string = 'Este curso prepara você para aprender JS.';
-
-  public instructor: string = 'Jamil';
-
   public training$!: Observable<Training>;
   public training!: Training;
   public topic?: Topic;
 
-  constructor(private _trainingsService: TrainingsService, private _activatedRoute: ActivatedRoute) { }
+  public trainingId!: string;
+  public userId!: string;
+  public authorId!: string;
+  public trainingIsSuspended!: boolean;
+
+  constructor(private _trainingsService: TrainingsService,
+              private _activatedRoute: ActivatedRoute,
+              private _jwtService: TokenService) { }
 
   ngOnInit(): void {
-    const id = this._activatedRoute.snapshot.params['id'];
+    this.trainingId = this._activatedRoute.snapshot.params['id'];
+    this.userId = this._jwtService.returnJwtData().id;
 
-    this.training$ = this._trainingsService.getTrainingById(id);
+    this.training$ = this._trainingsService.getTrainingById(this.trainingId);
 
-    this.training$.subscribe(training => this.training = training);
+    this.training$.subscribe(training => {
+      this.training = training;
+      this.authorId = training.author!;
+      this.trainingIsSuspended = !training.active!;
+    });
+
   }
 
   public getTopic(topic: Topic): void {
     this.topic = topic;
   }
 
+  public suspendTraining() {
+    this._trainingsService.suspendTraining(this.trainingId).subscribe();
+  }
+
+  onCompleteTraining() {
+    this._trainingsService.completeTraining(this.userId, this.trainingId)
+      .subscribe((response: any) => {
+        console.log("aqui", response)
+        if (response.status === 404) {
+          alert("Aluno não matriculado no curso")
+        } else if (response.body === 400) {
+          alert("Nem todos os tópicos do curso foram concluídos. Favor concluir todas as atividades do treinamento")
+        } else alert('Curso concluído com sucesso')
+      })
+  }
+
+  onCompleteTopic(){
+    console.log(this.userId)
+    this.topic && this._trainingsService.completeTopic(this.userId, this.topic.id)
+      .subscribe((response: any) => {
+        console.log("aqui", response)
+        if (response.status === 404) {
+          alert("Aluno não matriculado no curso")
+        } else alert('Tópico concluído com sucesso')
+      })
+  }
 }

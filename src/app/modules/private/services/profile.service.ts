@@ -29,4 +29,19 @@ export class ProfileService {
         );
     });
   }
+
+  public loadRegisteredTrainings(userId: any) {
+    return new Promise((resolve, reject) => {
+      this._httpClient.get<Training[]>(`${this.ApiPath}/registered/${userId}`)
+        .toPromise()
+        .then(
+          (data: any) => {
+            resolve(data)
+          },
+          (erro) => {
+            reject(erro);
+          }
+        );
+    });
+  }
 }

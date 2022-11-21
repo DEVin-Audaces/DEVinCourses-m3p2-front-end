@@ -16,7 +16,11 @@ export class InitialScreenComponent implements OnInit {
     "https://img.freepik.com/fotos-gratis/todos-estao-sorrindo-e-ouvindo-grupo-de-pessoas-em-conferencia-de-negocios-em-sala-de-aula-moderna-durante-o-dia_146671-16288.jpg",
     "https://img.freepik.com/fotos-gratis/aluno-em-sala-de-aula-olhando-para-o-curso_23-2148888810.jpg",
     "https://img.freepik.com/fotos-gratis/feche-a-mao-fazendo-anotacoes_23-2148888827.jpg",
-    "https://img.freepik.com/fotos-gratis/feche-a-mao-escrevendo-na-vista-superior-do-caderno_23-2148888824.jpg"
+    "https://img.freepik.com/fotos-gratis/feche-a-mao-escrevendo-na-vista-superior-do-caderno_23-2148888824.jpg",
+    "https://img.freepik.com/fotos-gratis/feliz-macho-escrita-positivo-correio-para-cliente_1163-3986.jpg",
+    "https://img.freepik.com/fotos-gratis/empresaria-participa-de-reuniao-on-line_1163-4281.jpg",
+    "https://img.freepik.com/fotos-gratis/jovem-empresario-trabalhando-com-computador-remotamente_1328-3388.jpg",
+
   ]
 
   public trainings!: Observable<Training[]>;

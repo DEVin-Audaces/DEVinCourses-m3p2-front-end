@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Training } from 'src/app/interfaces/training';
+import { TrainingUser } from 'src/app/interfaces/training-user';
 import { TokenService } from '../../public/services/token-service/token.service';
 import { ProfileService } from '../services/profile.service';
 
@@ -11,30 +12,66 @@ import { ProfileService } from '../services/profile.service';
 })
 export class ProfileComponent implements OnInit {
 
-  resultLoad: any;
-  userId = '4C4AF6A4-716E-4D2C-B439-3AC76991CB79'; // TODO Depois realizar a consulta do id automatico
+  userId: any;
+  // userId = '5691B39A-B968-4187-8009-08DACA4E7BC8'; // TODO Depois realizar a consulta do id automatico
 
-  trainingList: Training[] = [];
+  trainingList: any;
+  trainingUsersList: any;
+
+  trainingListUnDone: any;
+  trainingListDone: any;
 
   constructor(private _activatedRoute: ActivatedRoute, private _profileService: ProfileService, private _tokenService: TokenService) { }
 
   async ngOnInit(): Promise<void> {
 
-    // const user:any = this._tokenService.returnJwtData();
-    // this.userId = user.jti;
+    const user: any = this._tokenService.returnJwtData();
+    this.userId = user.id;
 
-    await this._activatedRoute.params.subscribe((params) => {
+    //Get Trainings List
+    this._profileService.loadByUserId(this.userId).then((data: any) => {
+      this.trainingList = data;
 
-      this._profileService.loadByUserId(this.userId).then((data: any) => {
-        this.resultLoad = data;
+      console.log(this.trainingList);
+    }
+    );
+
+    //Get TrainingsUser List and prepare trainingListUnDone and trainingListDone
+    this._profileService.loadRegisteredTrainings(this.userId).then((data: any) => {
+      this.trainingUsersList = data;
+
+      console.log(this.trainingUsersList);
+
+      this.trainingListUnDone = this.trainingList.filter((training: Training) => {
+        const checkUndone =
+          this.trainingUsersList.find((trainingUser: TrainingUser) =>
+            trainingUser.trainingId == training.id && !trainingUser.completed)
+
+        if (checkUndone) {
+          return training;
+        }
+        return null;
+      })
+
+      this.trainingListDone = this.trainingList.filter((training: Training) => {
+        const checkDone =
+          this.trainingUsersList.find((trainingUser: TrainingUser) =>
+            trainingUser.trainingId == training.id && trainingUser.completed)
+
+        if (checkDone) {
+          return training;
+        }
+        return null;
+      })
+
+      console.log(this.trainingListUnDone);
+      console.log(this.trainingListDone);
+    });
 
 
-        console.log(this.resultLoad);
-        
-      }
-      );
 
-    })
+
+
   }
 
   //hiding content from 
@@ -51,5 +88,6 @@ export class ProfileComponent implements OnInit {
   onclickDone() {
     this.visibleDone = !this.visibleDone;
   }
+
 
 }

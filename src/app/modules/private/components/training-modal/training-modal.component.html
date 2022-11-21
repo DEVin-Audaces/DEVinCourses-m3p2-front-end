@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Detalhes do Treinamento {{training.name}}</h2>
+<mat-dialog-content class="mat-typography">
+  <img mat-card-image src="https://source.unsplash.com/random" alt="Random Image">
+  <h3>Sumario</h3>
+  <p>{{training.summary}}</p>
+
+  <mat-divider></mat-divider>
+
+  <h3>Duração</h3>
+  <p>{{training.duration}}</p>
+
+  <mat-divider></mat-divider>
+
+  <h3 *ngIf="isRegistered">Instrutor</h3>
+  <p *ngIf="isRegistered">{{training.instructor}}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Fechar</button>
+</mat-dialog-actions>
