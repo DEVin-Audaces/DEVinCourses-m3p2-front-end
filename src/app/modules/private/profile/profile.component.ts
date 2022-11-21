@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
   async ngOnInit(): Promise<void> {
 
     const user: any = this._tokenService.returnJwtData();
-    this.userId = user.jti;
+    this.userId = user.id;
 
     //Get Trainings List
     this._profileService.loadByUserId(this.userId).then((data: any) => {
