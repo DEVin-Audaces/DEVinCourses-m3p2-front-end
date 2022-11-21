@@ -34,7 +34,8 @@ export class TokenService {
 
   private jwtDecoder(): UserJwtData{
     const token = this.returnToken();
-    const user: UserJwtData = jwtDecode(token);
+    const userInfo: any = jwtDecode(token);
+    let user: UserJwtData = { id: userInfo.jti, email: userInfo.unique_name};
     return user;
   }
 

@@ -1,27 +1,41 @@
-# DEVinCourses
+# M3P2-DEVinCourses
+Aplicação DevinCourses, projeto desenvolvido pelos alunos do curso DEVinHouse Turma Audaces 2022, do SENAI/SC.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
+O FrontEnd foi desenvolvido em Angular.
+A API foi desenvolvida em .NET Core 6, em C#, conectando em base SQL Server.
 
-## Development server
+🔨 Funcionalidades do projeto
+ Módulo 1: Cadastro de Usuários e Autenticação
+ Módulo 2: Área de Perfil e de Treinamentos a realizar/realizados.
+ Módulo 3: Área do Treinamento
+ 
+## ✔️ Técnicas e tecnologias utilizadas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- ``C#``
+- ``ASP.NET Core 6 com Entity Framework Core 6``
+- ``SQL Server``
+- ``Paradigma de orientação a objetos``
 
-## Code scaffolding
+## 🚀 Pessoas desenvolvedoras do projeto
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+``Squad 1``
+[@matheusgevartosky](https://www.github.com/matheusgevartosky)
+[@RodrigoRaiche](https://www.github.com/RodrigoRaiche)
+[@juliju01](https://www.github.com/juliju01)
+[@feliperi0s](https://www.github.com/feliperi0s)
+[@Bbbias](https://www.github.com/Bbbias)
 
-## Build
+``Squad 2``
+[@JoaoCoelhoSoares](https://www.github.com/JoaoCoelhoSoares)
+[@agnaldobrito](https://www.github.com/agnaldobrito)
+[@Queroix](https://www.github.com/Queroix)
+[@gmvilela](https://www.github.com/gmvilela)
+[@eduardo-borges-goncalves](https://www.github.com/eduardo-borges-goncalves)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+``Squad 3``
+[@Reibnitz](https://www.github.com/Reibnitz)
+[@pedrocapinos](https://www.github.com/pedrocapinos)
+[@Ro3son](https://www.github.com/Ro3son)
+[@brunocapistrano](https://www.github.com/brunocapistrano)
+[@ViniciusAAssuncao](https://www.github.com/ViniciusAAssuncao)
+[@BCS93](https://www.github.com/BCS93)

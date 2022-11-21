@@ -9,11 +9,11 @@
 
       <div class="content">
         <div *ngIf="topic?.type == 'lesson'; else activity">
-          <iframe [src]="topic?.content! | safe" frameborder="0" allowfullscreen></iframe>
+          <iframe class="lesson" [src]="topic?.content! | safe" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <ng-template #activity>
-          <p>{{topic?.content}}</p>
+          <h3 class="activity">{{topic?.content}}</h3>
         </ng-template>
       </div>
 
@@ -21,13 +21,16 @@
         <app-content-module [modules]="training.modules!" (topic)="getTopic($event)"></app-content-module>
       </div>
     </div>
-    
+
     <div class="footer-content-video">
       <h3>Resumo: {{training.summary}}</h3>
-      <h4>Professor: {{training.instructor}}</h4>
+      <h3>Professor: {{training.instructor}}</h3>
     </div>
     <div class="complete-training">
-      <button (click)="onComplete()" mat-raised-button color="primary">Concluir Treinamento</button>
+      <button *ngIf="topic" (click)="onCompleteTopic()" mat-raised-button >Concluir Tópico</button>
+      <button (click)="onCompleteTraining()" mat-raised-button color="primary">Concluir Treinamento</button>
     </div>
   </div>
+
+  <button [disabled]="trainingIsSuspended" *ngIf="userId == authorId" class="suspend-button btn btn-danger" (click)="suspendTraining()">Suspender treinamento</button>
 </main>

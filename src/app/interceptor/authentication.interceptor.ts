@@ -13,16 +13,21 @@ import { TokenService } from '../modules/public/services/token-service/token.ser
 export class AuthenticationInterceptor implements HttpInterceptor {
 
 
-  constructor(private _tokenService: TokenService) {}
+  constructor(private _tokenService: TokenService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
+    const endPointUploadName = request.url.split("/").reverse()[0]
     if (this._tokenService.hasToken() == true) {
-        const token = this._tokenService.returnToken();
-        const headers = new HttpHeaders().set('content-type', 'application/json')
-                                         .set('Access-Control-Allow-Origin', '*')
-                                         .set('Authorization', 'Bearer ' + token )
-                                         .set('withCredentials', 'true' );
+      const token = this._tokenService.returnToken();
+      const contentType = endPointUploadName !== 'UploadImgUser'
+      let headers = new HttpHeaders()
+        .set('Access-Control-Allow-Origin', '*')
+        .set('Authorization', 'Bearer ' + token)
+        .set('withCredentials', 'true');
+      if (contentType) {
+        headers = headers.set("Content-Type", "application/json")
+      }
       request = request.clone({ headers });
     }
 
