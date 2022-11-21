@@ -22,12 +22,12 @@
         <div class="duascolunas">
             <div>
                 <div>
-                    <p *ngIf="registration">Idade</p>
+                    <p>Idade</p>
                     <input type="number" formControlName="age">
                 </div>
                 <div>
-                  <p>Senha</p>
-                  <p *ngIf="edit">Senha original ou senha nova</p>
+                  <p *ngIf="registration">Senha</p>
+                  <p *ngIf="edit">Senha original ou nova</p>
                   <input type="password" formControlName="password" [disabled]="edit">
                   <br> <span class="alert"
                       *ngIf="newUser.get('password')?.errors && (newUser.get('password')?.touched && newUser.get('password')?.dirty)">
@@ -47,7 +47,11 @@
             </div>
         </div>
 
-        <p class="link">Já tem cadastro? <a routerLink="/">Clique aqui</a></p>
+        <br> <span class="alert"
+        *ngIf="newUser.get('password')?.errors && (newUser.get('password')?.touched && newUser.get('password')?.dirty)">
+        As Senhas devem possuir números e letras </span>
+
+        <p class="link" *ngIf="registration">Já tem cadastro? <a routerLink="/">Clique aqui</a></p>
         <br>
         <button [ngClass]="{'disabled' : newUser.invalid }"
             [disabled]="newUser.invalid || newUser.value.password != newUser.value.passwordRepeat"> Confirmar</button>

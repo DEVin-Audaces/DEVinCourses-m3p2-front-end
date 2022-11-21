@@ -2,7 +2,7 @@ import { Users } from './../../../../interfaces/user';
 import { UsersService } from './../../services/user-service/user-service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
-import { formatDate } from '@angular/common';
+import { formatDate, Location } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
@@ -27,7 +27,7 @@ export class NewUserPageComponent implements OnInit {
     passwordRepeat: ['', [Validators.required, Validators.minLength(8)]],
   })
 
-  constructor(private form: FormBuilder, private userService: UsersService, private activatedRoute: ActivatedRoute,
+  constructor(private form: FormBuilder, private userService: UsersService, private activatedRoute: ActivatedRoute,private _location: Location
   ) {
   }
 
@@ -36,6 +36,8 @@ export class NewUserPageComponent implements OnInit {
     if (id) {
       this.edit = true
       this.registration = false
+      this.newUser.get('email')?.disable()
+      this.newUser.get('cpf')?.disable()
       this.userService.getUserLogin().subscribe(users =>
         this.updateForm(users)
       )
@@ -54,6 +56,9 @@ export class NewUserPageComponent implements OnInit {
         this.userService.createUser(newUser);
       }
     }
+    window.location.reload();
+    this._location.back();
+
   }
 
   public onFileSelected(event: any){
