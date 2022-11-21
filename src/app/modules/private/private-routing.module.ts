@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: '', component: FullpageComponent,
     children: [
-      { path: '', component: InitialScreenComponent },
+      { path: 'home', component: InitialScreenComponent },
       { path: 'registration/:id', component: TrainingRegistrationComponent },
       { path: 'report', component: ReportListComponent },
       { path: 'create-training', component: CreateTrainingComponent },
