@@ -22,10 +22,17 @@
                 matTooltip="Clique no botão para se matricular" matTooltipPosition="below" matTooltipShowDelay=500
                 (click)="submitSubscription()">Matricular no
                 treinamento</button>
+
+
+
             <button *ngIf="buttonType == 'matriculado'" mat-flat-button color="warn"
                 matTooltip="Clique no botão para cancelar sua matricula" matTooltipPosition="below"
                 matTooltipShowDelay=500 (click)="cancelSubscription()">Desmarticular no treinamento</button>
             <button *ngIf="buttonType == 'suspenso'" mat-flat-button disabled>⚠️ O curso está suspenso ⚠️</button>
+
+            <button [disabled]="buttonType == 'suspenso'" mat-flat-button color="accent"
+                matTooltip="Clique para acessar o treinamento" matTooltipPosition="below" matTooltipShowDelay=500
+                (click)="accessTraining()">Acessar treinamento</button>
 
         </div>
 

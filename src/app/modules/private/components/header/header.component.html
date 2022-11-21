@@ -8,9 +8,21 @@
           <mat-icon class="home-icon" fontIcon="home"></mat-icon>
           <span>Início</span>
         </a>
-        <a class="menu_item" [routerLink]="['watch']" routerLinkActive="active">
+        <!-- <a class="menu_item" [routerLink]="['watch']" routerLinkActive="active">
           <mat-icon class="training-icon" fontIcon="ondemand_video"></mat-icon>
           <span>Treinamentos</span>
+        </a> -->
+        <a class="menu_item" [routerLink]="['profile']" routerLinkActive="active">
+          <mat-icon class="training-icon" fontIcon="ondemand_video"></mat-icon>
+          <span>Meus Treinamentos</span>
+        </a>
+        <a class="menu_item" [routerLink]="['create-training']" routerLinkActive="active">
+          <mat-icon class="register-icon"  fontIcon="app_registration"></mat-icon>
+          <span>Cadastrar</span>
+        </a>
+        <a class="menu_item" [routerLink]="['report']" routerLinkActive="active">
+          <mat-icon class="list-icon"  fontIcon="view_list"></mat-icon>
+          <span>Relatórios</span>
         </a>
       </div>
 

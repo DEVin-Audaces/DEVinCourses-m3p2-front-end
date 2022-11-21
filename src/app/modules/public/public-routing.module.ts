@@ -8,7 +8,7 @@ import { NewUserPageComponent } from './components/new-user-page/new-user-page.c
 const routes: Routes = [
 
   {
-    path:'main',
+    path:'trainings',
     loadChildren:() => import('../private/private.module').then(m => m.PrivateModule)
   },
   {

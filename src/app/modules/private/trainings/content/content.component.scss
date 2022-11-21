@@ -1,46 +1,8 @@
-.header-content {
+@import "../../../../../assets/css/contentVideo";
+
+.complete-training {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding-top: 150px;
-  gap: 540px;
-
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
 }
-
-.content-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.content {
-  background-color: #f8f8f8;
-  width: 738px;
-  height: 444px;
-  border-radius: 6px;
-}
-
-.footer-content {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 550px;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-}
-
-.aside-content {
-  display: flex;
-  justify-content: center;
-  margin-left: 100px;
-  height: 100%;
-
-}
-
-// .video {
-//   display: inline-block;
-// }

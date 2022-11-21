@@ -1,25 +1,36 @@
-<div>
-
+<main class="content-main">
   <div class="video">
-    <div class="header-content">
-      <p>Título do Link</p>
-      <p>Duração</p>
+    <div class="header-content-video">
+      <h1>Tópico: {{topic?.name}}</h1>
+      <h2>Duração: {{ training.duration}} h</h2>
     </div>
-    
-    <div class="content-container">
-      
-      <div class="content"></div>
 
-      <div class="aside-content">
-        <app-content-module></app-content-module>
+    <div class="content-container">
+
+      <div class="content">
+        <div *ngIf="topic?.type == 'lesson'; else activity">
+          <iframe class="lesson" [src]="topic?.content! | safe" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <ng-template #activity>
+          <h3 class="activity">{{topic?.content}}</h3>
+        </ng-template>
       </div>
 
+      <div class="aside-content" >
+        <app-content-module [modules]="training.modules!" (topic)="getTopic($event)"></app-content-module>
+      </div>
     </div>
-    
-    <div class="footer-content">
-      <p>Resumo</p>
-      <p>Professor</p>
+
+    <div class="footer-content-video">
+      <h3>Resumo: {{training.summary}}</h3>
+      <h3>Professor: {{training.instructor}}</h3>
+    </div>
+    <div class="complete-training">
+      <button *ngIf="topic" (click)="onCompleteTopic()" mat-raised-button >Concluir Tópico</button>
+      <button (click)="onCompleteTraining()" mat-raised-button color="primary">Concluir Treinamento</button>
     </div>
   </div>
 
-</div>
+  <button [disabled]="trainingIsSuspended" *ngIf="userId == authorId" class="suspend-button btn btn-danger" (click)="suspendTraining()">Suspender treinamento</button>
+</main>

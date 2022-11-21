@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
             const token = response.body?.accessToken;
             this._userService.saveToken(token!);
             this._userService.getUser().subscribe(x => console.log(x));
-            this._router.navigate(['/main/'])
+            this._router.navigate(['trainings'])
           }
       }
     )
