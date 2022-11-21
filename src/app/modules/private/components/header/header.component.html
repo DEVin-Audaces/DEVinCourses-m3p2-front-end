@@ -29,12 +29,10 @@
     </div>
 
     <div class="perfil">
-      <a class="menu_item">
-        <h3 class="perfil_nome">Aluno</h3>
-        <div class="perfil_avatar">
-          <mat-icon class="perfil-icon" fontIcon="person"></mat-icon>
-        </div>
-      </a>
+      <h3 class="perfil_nome"><a [routerLink]="['EditUser', users.id]">{{users.name}}</a></h3>
+      <div class="perfil_avatar">
+        <img [src]="users.image" alt="">
+      </div>
     </div>
   </section>
 

@@ -7,6 +7,7 @@ import { CreateTrainingComponent } from './trainings/create-training/create-trai
 import { InitialScreenComponent } from './trainings/initial-screen/initial-screen.component';
 import { ReportListComponent } from './trainings/report-list/report-list.component';
 import { ProfileComponent } from './profile/profile.component';
+import { NewUserPageComponent } from '../public/components/new-user-page/new-user-page.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
       { path: 'report', component: ReportListComponent },
       { path: 'create-training', component: CreateTrainingComponent },
       { path: 'profile', component: ProfileComponent },
-      { path: ':id', component: ContentComponent }
+      { path: ':id', component: ContentComponent },
+      {path:'EditUser/:id', component:NewUserPageComponent},
     ]
   }
 ];
